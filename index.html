@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- EDIT: Update page title if you want a different role label -->
+  <title>Ruben Vermaak | Data Analyst</title>
+  <meta name="description" content="Data analyst with a background in business, craft brewing, and English education. Google-certified in Advanced Data Analytics. Based in South Korea." />
+
+  <!--
+  ================================================================
+  PORTFOLIO WEBSITE — EDITING GUIDE
+  ================================================================
+
+  HOW TO CUSTOMISE THIS FILE
+  --------------------------
+  Search for "EDIT:" in this file — every place you need to swap
+  in your real content is marked with that tag.
+
+  KEY AREAS TO UPDATE:
+  1.  HERO BIO         — short punchy paragraph in the hero section
+  2.  ABOUT TEXT       — three paragraphs in the About section
+  3.  STATS            — four numbers in the About section
+  4.  SKILLS           — add/remove badge items in both skill groups
+  5.  PROJECTS         — edit project cards; add/remove cards as needed
+  6.  CERTIFICATIONS   — real certs are already populated
+  7.  CONTACT          — email, LinkedIn, GitHub are already set
+  8.  CV DOWNLOAD      — upload your CV as "cv.pdf" to this repo;
+                         the button already links to it automatically
+
+  COLORS (at the top of the <style> block):
+    --accent — change this one value to re-theme the whole site.
+
+  DEPLOYMENT GUIDE is at the very bottom of this file.
+  ================================================================
+  -->
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES — edit these to re-theme instantly
+       ============================================================ */
+    :root {
+      --navy:          #0a1628;
+      --navy-mid:      #0f2040;
+      --navy-card:     #142238;
+      --navy-border:   #1e3355;
+      --accent:        #00b4d8;   /* ← change this to re-theme */
+      --accent-dark:   #0089a7;
+      --text-primary:  #e2e8f0;
+      --text-secondary:#94a3b8;
+      --text-muted:    #64748b;
+      --font-heading:  'Space Grotesk', sans-serif;
+      --font-body:     'Inter', sans-serif;
+      --radius:        12px;
+      --transition:    0.28s ease;
+    }
+
+    /* ============================================================
+       RESET & BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    ul { list-style: none; }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section { padding: 96px 0; }
+
+    .section-label {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin-bottom: 60px;
+      font-size: 1rem;
+    }
+
+    /* ============================================================
+       NAVIGATION
+       ============================================================ */
+    nav {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 20px 0;
+      background: rgba(10, 22, 40, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--transition), padding var(--transition), background var(--transition);
+    }
+    nav.scrolled {
+      padding: 13px 0;
+      border-color: var(--navy-border);
+      background: rgba(10, 22, 40, 0.96);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: 0.03em;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 38px;
+    }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: color var(--transition);
+      letter-spacing: 0.02em;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--accent); text-decoration: none; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: transform var(--transition), opacity var(--transition);
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 740px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%; left: 0;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        background: var(--navy-mid);
+        border-top: 1px solid var(--navy-border);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        padding: 16px 24px;
+        border-bottom: 1px solid var(--navy-border);
+        font-size: 1rem;
+      }
+    }
+
+    /* ============================================================
+       BUTTONS
+       ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: all var(--transition);
+      text-decoration: none !important;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--navy);
+      border: 2px solid var(--accent);
+    }
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      border-color: var(--accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(0,180,216,0.28);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--text-primary);
+      border: 2px solid var(--navy-border);
+    }
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* ============================================================
+       HERO
+       ============================================================ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -25%; right: -18%;
+      width: 720px; height: 720px;
+      background: radial-gradient(circle, rgba(0,180,216,0.09) 0%, transparent 68%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -22%; left: -12%;
+      width: 540px; height: 540px;
+      background: radial-gradient(circle, rgba(0,180,216,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 740px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 26px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px; height: 2px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .hero-name {
+      font-family: var(--font-heading);
+      font-size: clamp(3rem, 7vw, 5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      margin-bottom: 18px;
+      color: var(--text-primary);
+    }
+    .hero-name .accent { color: var(--accent); }
+
+    .hero-role {
+      font-family: var(--font-heading);
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 22px;
+    }
+
+    .hero-bio {
+      font-size: clamp(1rem, 1.8vw, 1.08rem);
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin-bottom: 42px;
+      line-height: 1.75;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      animation: nudge 2.4s ease-in-out infinite;
+    }
+    .hero-scroll svg { width: 18px; height: 18px; stroke: var(--text-muted); }
+    @keyframes nudge {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      55%       { transform: translateX(-50%) translateY(7px); }
+    }
+
+    /* ============================================================
+       ABOUT
+       ============================================================ */
+    .about { background: var(--navy-mid); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--text-secondary);
+      margin-bottom: 18px;
+      font-size: 0.975rem;
+    }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-text strong { color: var(--text-primary); font-weight: 600; }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .stat-card {
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: var(--radius);
+      padding: 30px 22px;
+      text-align: center;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .stat-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+    .stat-number {
+      font-family: var(--font-heading);
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 860px) {
+      .about-grid { grid-template-columns: 1fr; gap: 52px; }
+    }
+
+    /* ============================================================
+       SKILLS
+       ============================================================ */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .skill-group-title {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 22px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--navy-border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .skill-group-title::before {
+      content: '';
+      display: block;
+      width: 8px; height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .skill-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      background: var(--navy-card);
+      color: var(--text-secondary);
+      border: 1px solid var(--navy-border);
+      transition: all var(--transition);
+      cursor: default;
+    }
+    .badge:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(0,180,216,0.07);
+    }
+    .badge-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 720px) {
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       PROJECTS
+       ============================================================ */
+    .projects { background: var(--navy-mid); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 28px;
+    }
+
+    .project-card {
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: var(--radius);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+    .project-card:hover {
+      border-color: rgba(0,180,216,0.4);
+      transform: translateY(-6px);
+      box-shadow: 0 24px 52px rgba(0,0,0,0.32);
+    }
+    .project-card:hover::before { transform: scaleX(1); }
+
+    /* Volunteer badge variant */
+    .project-card.volunteer { border-color: rgba(139,92,246,0.3); }
+    .project-card.volunteer::before {
+      background: linear-gradient(90deg, #8b5cf6, #6d28d9);
+    }
+    .project-card.volunteer:hover { border-color: rgba(139,92,246,0.6); }
+
+    .project-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .project-icon { font-size: 1.9rem; line-height: 1; }
+
+    .project-ext-link {
+      color: var(--text-muted);
+      transition: color var(--transition);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .project-card:hover .project-ext-link { color: var(--accent); }
+
+    .project-title {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .project-description {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      flex-grow: 1;
+    }
+    .project-description strong { color: var(--text-primary); font-weight: 600; }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .project-tag {
+      padding: 4px 10px;
+      background: rgba(0,180,216,0.1);
+      color: var(--accent);
+      border-radius: 4px;
+      font-size: 0.73rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+    .project-tag.purple {
+      background: rgba(139,92,246,0.12);
+      color: #a78bfa;
+    }
+
+    .project-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.83rem;
+      font-weight: 600;
+      color: var(--accent);
+      transition: gap var(--transition);
+      text-decoration: none !important;
+      margin-top: 4px;
+    }
+    .project-cta:hover { gap: 10px; }
+    .project-cta.purple { color: #a78bfa; }
+
+    /* More projects link row */
+    .more-projects {
+      margin-top: 48px;
+      text-align: center;
+    }
+    .more-projects a {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: color var(--transition);
+    }
+    .more-projects a:hover { color: var(--accent); text-decoration: none; }
+
+    /* ============================================================
+       CERTIFICATIONS
+       ============================================================ */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 22px;
+    }
+
+    .cert-card {
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: var(--radius);
+      padding: 26px 22px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .cert-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .cert-icon { font-size: 1.9rem; line-height: 1; flex-shrink: 0; margin-top: 2px; }
+
+    .cert-title {
+      font-family: var(--font-heading);
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .cert-issuer {
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    .cert-date { font-size: 0.76rem; color: var(--text-muted); }
+    .cert-verify {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: color var(--transition);
+    }
+    .cert-verify:hover { color: var(--accent); }
+
+    .cert-status {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+    .cert-status.completed   { background: rgba(0,180,216,0.14); color: var(--accent); }
+    .cert-status.in-progress { background: rgba(245,158,11,0.14); color: #f59e0b; }
+
+    /* ============================================================
+       CONTACT
+       ============================================================ */
+    .contact { background: var(--navy-mid); }
+
+    .contact-inner {
+      max-width: 660px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .contact-inner .section-subtitle { margin: 0 auto 50px; }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 28px;
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: var(--radius);
+      color: var(--text-secondary);
+      font-weight: 500;
+      font-size: 0.88rem;
+      transition: all var(--transition);
+      text-decoration: none !important;
+    }
+    .contact-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-3px);
+    }
+    .contact-link svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    footer {
+      padding: 30px 0;
+      text-align: center;
+      border-top: 1px solid var(--navy-border);
+    }
+    footer p { font-size: 0.8rem; color: var(--text-muted); }
+    footer a { color: var(--text-muted); }
+    footer a:hover { color: var(--accent); }
+
+    /* ============================================================
+       SCROLL-REVEAL ANIMATION
+       ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="#hero" class="nav-logo">RV<span>.</span></a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-content">
+
+        <p class="hero-eyebrow">Seoul, South Korea</p>
+
+        <h1 class="hero-name">
+          Ruben<br><span class="accent">Vermaak</span>
+        </h1>
+
+        <p class="hero-role">Data Analyst &nbsp;&middot;&nbsp; Google Advanced Data Analytics Certified</p>
+
+        <!-- EDIT: Adjust this bio to match your voice -->
+        <p class="hero-bio">
+          I turn complex data into decisions that make sense to people.
+          With a Commerce degree, hands-on experience running a business, and two years of
+          intensive self-directed data analytics training, I bring both analytical rigour and
+          practical business judgment to every dataset I work with.
+        </p>
+
+        <div class="hero-ctas">
+          <a href="#projects" class="btn btn-primary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+            View My Work
+          </a>
+          <!-- Upload your CV as "cv.pdf" to this repo. The link below will work automatically. -->
+          <a href="cv.pdf" download class="btn btn-outline">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download CV
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <span>Scroll</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       ABOUT
+       ============================================================ -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="about-grid">
+
+        <div class="about-text">
+          <p class="section-label reveal">About Me</p>
+          <h2 class="section-title reveal">Business, craft &amp;<br>data — all connected</h2>
+
+          <!-- EDIT: Adjust these paragraphs to match your voice -->
+          <p class="reveal">
+            My path to data analytics runs through three very different fields. I hold a
+            <strong>Bachelor of Commerce</strong> from Pearson Institute, where I built a
+            foundation in accounting, finance, and management — giving me a business lens
+            that most analysts develop only after years on the job.
+          </p>
+          <p class="reveal">
+            After graduating I founded and ran the <strong>Vermaak Brewing Company</strong>,
+            managing everything from recipe development to production scheduling, supply chain,
+            and distribution. Running a business is applied analytics: you track what sells,
+            model costs, and make data-driven decisions every day — or you fail.
+          </p>
+          <p class="reveal">
+            Since 2023 I have been based in South Korea, teaching English while completing
+            two Google Data Analytics certifications. I have applied Python, SQL, R, and
+            Tableau to a diverse portfolio of real-world datasets — from HR churn prediction
+            to NYC taxi fares — and contributed to a DataKind volunteer project on climate
+            patterns affecting smallholder farmers. <strong>I am ready to do this full-time.</strong>
+          </p>
+        </div>
+
+        <!-- EDIT: Update these numbers if needed -->
+        <div class="about-stats">
+          <div class="stat-card reveal">
+            <div class="stat-number">8+</div>
+            <div class="stat-label">Projects Completed</div>
+          </div>
+          <div class="stat-card reveal">
+            <div class="stat-number">2</div>
+            <div class="stat-label">Google Certifications</div>
+          </div>
+          <div class="stat-card reveal">
+            <div class="stat-number">BCom</div>
+            <div class="stat-label">Commerce Degree</div>
+          </div>
+          <div class="stat-card reveal">
+            <div class="stat-number">3+</div>
+            <div class="stat-label">Years in Business</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SKILLS
+       ============================================================ -->
+  <section class="section" id="skills">
+    <div class="container">
+      <p class="section-label reveal">What I Work With</p>
+      <h2 class="section-title reveal">Skills &amp; Toolkit</h2>
+      <p class="section-subtitle reveal">
+        A focused skill set built through hands-on projects and formal certification —
+        only tools I have genuinely used.
+      </p>
+
+      <div class="skills-grid">
+
+        <!-- EDIT: Add/remove badges here -->
+        <div class="reveal">
+          <p class="skill-group-title">Technical Skills</p>
+          <div class="skill-badges">
+            <span class="badge"><span class="badge-dot"></span>Python</span>
+            <span class="badge"><span class="badge-dot"></span>Pandas</span>
+            <span class="badge"><span class="badge-dot"></span>NumPy</span>
+            <span class="badge"><span class="badge-dot"></span>Scikit-learn</span>
+            <span class="badge"><span class="badge-dot"></span>SQL</span>
+            <span class="badge"><span class="badge-dot"></span>R</span>
+            <span class="badge"><span class="badge-dot"></span>Tableau</span>
+            <span class="badge"><span class="badge-dot"></span>Matplotlib</span>
+            <span class="badge"><span class="badge-dot"></span>Seaborn</span>
+            <span class="badge"><span class="badge-dot"></span>Jupyter Notebooks</span>
+            <span class="badge"><span class="badge-dot"></span>Excel / Google Sheets</span>
+            <span class="badge"><span class="badge-dot"></span>Git &amp; GitHub</span>
+            <span class="badge"><span class="badge-dot"></span>Exploratory Data Analysis</span>
+            <span class="badge"><span class="badge-dot"></span>Machine Learning</span>
+            <span class="badge"><span class="badge-dot"></span>Logistic Regression</span>
+            <span class="badge"><span class="badge-dot"></span>Random Forest</span>
+            <span class="badge"><span class="badge-dot"></span>Statistical Analysis</span>
+          </div>
+        </div>
+
+        <!-- EDIT: Add/remove badges here -->
+        <div class="reveal">
+          <p class="skill-group-title">Professional Skills</p>
+          <div class="skill-badges">
+            <span class="badge"><span class="badge-dot"></span>Business Acumen</span>
+            <span class="badge"><span class="badge-dot"></span>Entrepreneurship</span>
+            <span class="badge"><span class="badge-dot"></span>Technical Communication</span>
+            <span class="badge"><span class="badge-dot"></span>Stakeholder Reporting</span>
+            <span class="badge"><span class="badge-dot"></span>Cross-cultural Communication</span>
+            <span class="badge"><span class="badge-dot"></span>Leadership &amp; Management</span>
+            <span class="badge"><span class="badge-dot"></span>Problem Decomposition</span>
+            <span class="badge"><span class="badge-dot"></span>Self-directed Learning</span>
+            <span class="badge"><span class="badge-dot"></span>English (Native)</span>
+            <span class="badge"><span class="badge-dot"></span>Afrikaans (Fluent)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       PROJECTS
+       ============================================================ -->
+  <section class="projects section" id="projects">
+    <div class="container">
+      <p class="section-label reveal">Portfolio</p>
+      <h2 class="section-title reveal">Featured Projects</h2>
+      <p class="section-subtitle reveal">
+        Each project follows a clear narrative: the problem, the approach,
+        the tools, and — most importantly — the result.
+      </p>
+
+      <div class="projects-grid">
+
+        <!-- PROJECT 1: Salifort Motors -->
+        <div class="project-card reveal">
+          <div class="project-header">
+            <span class="project-icon">🏭</span>
+            <a href="https://github.com/Rpvermaak/Google-Advanced-Data-Analytics-Projects/blob/main/Salifort%20Motor%20Capstone%20Project/Activity_%20Course%207%20Salifort%20Motors%20project%20lab.ipynb"
+               target="_blank" rel="noopener" class="project-ext-link" aria-label="View on GitHub">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </a>
+          </div>
+          <h3 class="project-title">Salifort Motors — HR Churn Prediction</h3>
+          <p class="project-description">
+            <strong>Problem:</strong> High employee turnover was costing Salifort Motors significant
+            recruitment and training expenditure, with no predictive system in place.<br><br>
+            <strong>Approach:</strong> Conducted EDA to uncover retention patterns, then built and
+            compared a Logistic Regression model against a Random Forest classifier, using
+            cross-validation and feature importance analysis.<br><br>
+            <strong>Result:</strong> Random Forest achieved 98%+ accuracy, surfacing satisfaction
+            score, monthly hours, and promotion history as the strongest churn predictors.
+            Delivered an actionable retention strategy for the HR team.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Scikit-learn</span>
+            <span class="project-tag">Random Forest</span>
+            <span class="project-tag">Logistic Regression</span>
+            <span class="project-tag">Pandas</span>
+          </div>
+          <a href="https://github.com/Rpvermaak/Google-Advanced-Data-Analytics-Projects/blob/main/Salifort%20Motor%20Capstone%20Project/Activity_%20Course%207%20Salifort%20Motors%20project%20lab.ipynb"
+             target="_blank" rel="noopener" class="project-cta">
+            View on GitHub
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- PROJECT 2: TikTok -->
+        <div class="project-card reveal">
+          <div class="project-header">
+            <span class="project-icon">📱</span>
+            <a href="https://github.com/Rpvermaak/Google-Advanced-Data-Analytics-Projects/tree/main/TikTok-Project"
+               target="_blank" rel="noopener" class="project-ext-link" aria-label="View on GitHub">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </a>
+          </div>
+          <h3 class="project-title">TikTok — Claims vs. Opinions Classifier</h3>
+          <p class="project-description">
+            <strong>Problem:</strong> TikTok needed to scale content moderation by automatically
+            distinguishing factual claims from opinions in video captions — a task too large for
+            manual review.<br><br>
+            <strong>Approach:</strong> Feature engineering on engagement metrics and caption text,
+            followed by Logistic Regression and Random Forest classification with cross-validation
+            to guard against overfitting.<br><br>
+            <strong>Result:</strong> Achieved 99% classification accuracy on the test set.
+            Identified key engagement signals that reliably distinguish claim-based content,
+            supporting scalable automated moderation.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Scikit-learn</span>
+            <span class="project-tag">NLP</span>
+            <span class="project-tag">Random Forest</span>
+            <span class="project-tag">EDA</span>
+          </div>
+          <a href="https://github.com/Rpvermaak/Google-Advanced-Data-Analytics-Projects/tree/main/TikTok-Project"
+             target="_blank" rel="noopener" class="project-cta">
+            View on GitHub
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- PROJECT 3: Waze -->
+        <div class="project-card reveal">
+          <div class="project-header">
+            <span class="project-icon">🗺️</span>
+            <a href="https://github.com/Rpvermaak/Google-Advanced-Data-Analytics-Projects/tree/main/Waze-Project"
+               target="_blank" rel="noopener" class="project-ext-link" aria-label="View on GitHub">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </a>
+          </div>
+          <h3 class="project-title">Waze — User Churn Prediction</h3>
+          <p class="project-description">
+            <strong>Problem:</strong> Waze needed to identify users likely to churn before
+            they uninstalled the app, enabling proactive retention campaigns.<br><br>
+            <strong>Approach:</strong> Exploratory analysis of app-usage patterns, hypothesis
+            testing to validate behavioural differences between retained and churned users,
+            then predictive modelling with Logistic Regression and Random Forest.
+            <br><br>
+            <strong>Result:</strong> Surfaced high-confidence behavioural signals predicting
+            churn risk. Packaged insights as a product team brief with prioritised intervention
+            recommendations.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Hypothesis Testing</span>
+            <span class="project-tag">Logistic Regression</span>
+            <span class="project-tag">Seaborn</span>
+          </div>
+          <a href="https://github.com/Rpvermaak/Google-Advanced-Data-Analytics-Projects/tree/main/Waze-Project"
+             target="_blank" rel="noopener" class="project-cta">
+            View on GitHub
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- PROJECT 4: NYC TLC -->
+        <div class="project-card reveal">
+          <div class="project-header">
+            <span class="project-icon">🚕</span>
+            <a href="https://github.com/Rpvermaak/Google-Advanced-Data-Analytics-Projects/tree/main/TLC"
+               target="_blank" rel="noopener" class="project-ext-link" aria-label="View on GitHub">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </a>
+          </div>
+          <h3 class="project-title">NYC TLC — Fare &amp; Tip Analysis</h3>
+          <p class="project-description">
+            <strong>Problem:</strong> The New York City Taxi and Limousine Commission needed
+            a clear model of what drives fare variability and passenger tipping behaviour
+            across millions of trips.<br><br>
+            <strong>Approach:</strong> Linear regression modelling for fare prediction;
+            statistical analysis of tipping patterns segmented by route, time of day, and
+            payment method.<br><br>
+            <strong>Result:</strong> Built a reliable fare prediction model and identified
+            the route and temporal features most strongly correlated with tip likelihood —
+            findings presented in a stakeholder-ready summary.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Linear Regression</span>
+            <span class="project-tag">Statistics</span>
+            <span class="project-tag">Matplotlib</span>
+          </div>
+          <a href="https://github.com/Rpvermaak/Google-Advanced-Data-Analytics-Projects/tree/main/TLC"
+             target="_blank" rel="noopener" class="project-cta">
+            View on GitHub
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- PROJECT 5: Cyclistic -->
+        <div class="project-card reveal">
+          <div class="project-header">
+            <span class="project-icon">🚲</span>
+            <a href="https://github.com/Rpvermaak/bike-share-project/blob/main/Bike_Share_Project.ipynb"
+               target="_blank" rel="noopener" class="project-ext-link" aria-label="View on GitHub">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </a>
+          </div>
+          <h3 class="project-title">Cyclistic — Bike Share Conversion Analysis</h3>
+          <p class="project-description">
+            <strong>Problem:</strong> Cyclistic needed to understand behavioural differences
+            between casual riders and annual members to design a data-driven subscription
+            conversion campaign.<br><br>
+            <strong>Approach:</strong> SQL extraction and aggregation across 12 months of
+            trip data, followed by a Tableau dashboard showcasing ride frequency, duration,
+            and station preference by rider type.<br><br>
+            <strong>Result:</strong> Identified three distinct behavioural patterns separating
+            rider segments. Recommendations delivered via an executive Tableau dashboard —
+            <a href="https://public.tableau.com/views/daily_rides_summary/Dashboard1" target="_blank" rel="noopener">view live</a>.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">SQL</span>
+            <span class="project-tag">Tableau</span>
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Data Storytelling</span>
+          </div>
+          <a href="https://github.com/Rpvermaak/bike-share-project/blob/main/Bike_Share_Project.ipynb"
+             target="_blank" rel="noopener" class="project-cta">
+            View on GitHub
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- PROJECT 6: DataKind Volunteer -->
+        <div class="project-card volunteer reveal">
+          <div class="project-header">
+            <span class="project-icon">🌱</span>
+            <a href="https://github.com/Rpvermaak/datakit-smallholder-farmers-fall-2025/blob/main/Challenge%201%20_Weather%20Patterns/Ruben%20Vermaak/Challenge_1_Identifying_patterns_in_weather_and_agriculture_ruben_vermaak.ipynb"
+               target="_blank" rel="noopener" class="project-ext-link" aria-label="View on GitHub">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </a>
+          </div>
+          <h3 class="project-title">DataKind — Smallholder Farmers Climate Analysis <span style="font-size:0.7rem; background:rgba(139,92,246,0.15); color:#a78bfa; padding:2px 8px; border-radius:4px; margin-left:6px; font-weight:600; letter-spacing:0.05em; vertical-align:middle;">VOLUNTEER</span></h3>
+          <p class="project-description">
+            <strong>Problem:</strong> Smallholder farmers in developing regions face
+            unpredictable climate patterns that threaten yields, yet lack data-driven guidance
+            on optimal planting cycles.<br><br>
+            <strong>Approach:</strong> Contributed to a collaborative DataKind data science
+            challenge (Nov–Dec 2025), identifying patterns in historical weather and
+            agricultural data using Python to inform planting recommendations.<br><br>
+            <strong>Result:</strong> Produced an actionable analysis of seasonal weather patterns
+            relevant to crop planning — applying data science skills to a real social-impact problem.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag purple">Python</span>
+            <span class="project-tag purple">Climate Data</span>
+            <span class="project-tag purple">EDA</span>
+            <span class="project-tag purple">Social Impact</span>
+          </div>
+          <a href="https://github.com/Rpvermaak/datakit-smallholder-farmers-fall-2025/blob/main/Challenge%201%20_Weather%20Patterns/Ruben%20Vermaak/Challenge_1_Identifying_patterns_in_weather_and_agriculture_ruben_vermaak.ipynb"
+             target="_blank" rel="noopener" class="project-cta purple">
+            View on GitHub
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Link to full GitHub profile for remaining projects -->
+      <div class="more-projects reveal">
+        <a href="https://github.com/Rpvermaak" target="_blank" rel="noopener">
+          View all projects on GitHub &nbsp;→
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CERTIFICATIONS
+       ============================================================ -->
+  <section class="section" id="certifications">
+    <div class="container">
+      <p class="section-label reveal">Credentials</p>
+      <h2 class="section-title reveal">Certifications &amp; Education</h2>
+      <p class="section-subtitle reveal">
+        Formal qualifications underpinning every project in this portfolio.
+      </p>
+
+      <div class="certs-grid">
+
+        <div class="cert-card reveal">
+          <div class="cert-icon">📈</div>
+          <div>
+            <div class="cert-title">Google Advanced Data Analytics Professional Certificate</div>
+            <div class="cert-issuer">Google / Coursera</div>
+            <div class="cert-date">March 2025 – September 2025</div>
+            <span class="cert-status completed">Completed</span><br>
+            <a href="https://www.credly.com/badges/81be09d4-2897-4dcb-af6c-c63fd934d858/public_url"
+               target="_blank" rel="noopener" class="cert-verify">↗ Verify on Credly</a>
+          </div>
+        </div>
+
+        <div class="cert-card reveal">
+          <div class="cert-icon">🎓</div>
+          <div>
+            <div class="cert-title">Google Data Analytics Professional Certificate</div>
+            <div class="cert-issuer">Google / Coursera</div>
+            <div class="cert-date">June 2024 – December 2024</div>
+            <span class="cert-status completed">Completed</span><br>
+            <a href="https://www.credly.com/badges/91ce9d3a-1ae9-4314-bc46-d3ec036a5752/public_url"
+               target="_blank" rel="noopener" class="cert-verify">↗ Verify on Credly</a>
+          </div>
+        </div>
+
+        <div class="cert-card reveal">
+          <div class="cert-icon">🌏</div>
+          <div>
+            <div class="cert-title">Teaching English as a Foreign Language (TEFL) — 160 hours</div>
+            <div class="cert-issuer">TTA (The TEFL Academy)</div>
+            <div class="cert-date">March 2023 – June 2023</div>
+            <span class="cert-status completed">Completed</span>
+          </div>
+        </div>
+
+        <div class="cert-card reveal">
+          <div class="cert-icon">🏫</div>
+          <div>
+            <div class="cert-title">Bachelor of Commerce</div>
+            <div class="cert-issuer">Pearson Institute of Higher Education</div>
+            <div class="cert-date">2015 – 2019</div>
+            <span class="cert-status completed">Completed</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CONTACT
+       ============================================================ -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <p class="section-label reveal">Get In Touch</p>
+        <h2 class="section-title reveal">Let's Work Together</h2>
+        <p class="section-subtitle reveal">
+          Open to data analyst roles, freelance projects, and collaboration opportunities.
+          My inbox is always open.
+        </p>
+
+        <div class="contact-links reveal">
+
+          <a href="https://github.com/Rpvermaak" target="_blank" rel="noopener" class="contact-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+            GitHub
+          </a>
+
+          <a href="https://www.linkedin.com/in/ruben-vermaak-29b225a1" target="_blank" rel="noopener" class="contact-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+            LinkedIn
+          </a>
+
+          <a href="mailto:rpvermaak123@gmail.com" class="contact-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            rpvermaak123@gmail.com
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer>
+    <div class="container">
+      <p>
+        Built by <a href="#hero">Ruben Vermaak</a>
+        &copy; <span id="year"></span>
+        &nbsp;&middot;&nbsp;
+        Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a>
+      </p>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT
+       ============================================================ -->
+  <script>
+    // Auto-update copyright year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Navbar: shrink on scroll + highlight active section link
+    const navbar   = document.getElementById('navbar');
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    function onScroll() {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+
+      let current = '';
+      sections.forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 130) {
+          current = sec.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.toggle(
+          'active',
+          link.getAttribute('href') === `#${current}`
+        );
+      });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Mobile hamburger menu
+    const navToggle  = document.getElementById('navToggle');
+    const navLinksEl = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinksEl.classList.toggle('open');
+      navToggle.classList.toggle('open', isOpen);
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    navLinksEl.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinksEl.classList.remove('open');
+        navToggle.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Scroll-reveal: fade + slide elements into view with stagger
+    const revealEls = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+
+        const siblings = Array.from(
+          entry.target.parentElement.querySelectorAll('.reveal:not(.visible)')
+        );
+        const delay = siblings.indexOf(entry.target) * 80;
+
+        setTimeout(() => entry.target.classList.add('visible'), Math.max(delay, 0));
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+  </script>
+
+
+  <!--
+  ================================================================
+  DEPLOYMENT GUIDE — HOW TO GO LIVE ON GITHUB PAGES
+  ================================================================
+
+  PREREQUISITES
+  ─────────────
+  • A GitHub account
+  • A public repository named exactly:  <yourusername>.github.io
+    e.g. rubenvermaak.github.io
+
+  ──────────────────────────────────────────────────────────────
+  OPTION A — Upload via the GitHub website  (no Git needed)
+  ──────────────────────────────────────────────────────────────
+  1.  Go to:
+        https://github.com/<yourusername>/<yourusername>.github.io
+
+  2.  Click  "Add file"  →  "Upload files"
+
+  3.  Drag this index.html into the upload zone.
+      Add cv.pdf at the same time if you have it ready.
+
+  4.  In the "Commit changes" box, type something like:
+        "Add portfolio site"
+      then click  "Commit changes"
+
+  5.  Verify Pages is enabled:
+        Repository → Settings → Pages
+        Source should be "Deploy from a branch" → branch = "main"
+
+  6.  Wait 1–3 minutes, then visit:
+        https://<yourusername>.github.io
+      Your site is live!
+
+  ──────────────────────────────────────────────────────────────
+  OPTION B — Push via Git in the terminal
+  ──────────────────────────────────────────────────────────────
+  1.  Clone your repo (first time only):
+        git clone https://github.com/<yourusername>/<yourusername>.github.io
+        cd <yourusername>.github.io
+
+  2.  Copy index.html (and cv.pdf) into that folder.
+
+  3.  Commit and push:
+        git add index.html cv.pdf
+        git commit -m "Add portfolio site"
+        git push origin main
+
+  4.  Visit https://<yourusername>.github.io after 1–3 minutes.
+
+  ──────────────────────────────────────────────────────────────
+  ADDING YOUR CV PDF
+  ──────────────────────────────────────────────────────────────
+  • Export your CV as a PDF and name it:  cv.pdf
+  • Place it in the same folder as index.html
+  • The "Download CV" button already points to cv.pdf — no code change needed.
+
+  ──────────────────────────────────────────────────────────────
+  MAKING FUTURE EDITS
+  ──────────────────────────────────────────────────────────────
+  • Edit index.html locally or in GitHub's online editor.
+  • Commit and push / upload the file again.
+  • Changes appear live within 1–3 minutes.
+
+  TROUBLESHOOTING
+  ───────────────
+  • 404 error?           Check the file is named exactly:  index.html
+  • Pages not enabled?   Settings → Pages → Source → "Deploy from branch" → main
+  • Fonts not loading?   They load from Google — check your internet connection
+  • Seeing old version?  Hard-refresh: Cmd+Shift+R (Mac) / Ctrl+Shift+R (Windows)
+  ================================================================
+  -->
+
+</body>
+</html>
