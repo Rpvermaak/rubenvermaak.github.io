@@ -115,6 +115,71 @@
     }
 
     /* ============================================================
+       LOGO CONTAINERS
+       Wrap image logos in .logo-wrap for a clean white-pill look.
+       Use .logo-wrap.dark for brands with a dark-background logo.
+       Use .logo-wrap.accent for custom accent-colored icons.
+       ============================================================ */
+    .logo-wrap {
+      width: 48px;
+      height: 48px;
+      background: #ffffff;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px;
+      flex-shrink: 0;
+    }
+    .logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .logo-wrap svg { width: 100%; height: 100%; }
+
+    /* Dark pill for logos designed on dark/black backgrounds */
+    .logo-wrap.dark {
+      background: #010101;
+      padding: 8px;
+    }
+
+    /* Accent-tinted pill for custom SVG icons (fictional companies) */
+    .logo-wrap.accent {
+      background: rgba(0,180,216,0.12);
+      border: 1px solid rgba(0,180,216,0.25);
+      padding: 8px;
+    }
+
+    /* Purple-tinted pill for the volunteer project */
+    .logo-wrap.purple {
+      background: rgba(139,92,246,0.12);
+      border: 1px solid rgba(139,92,246,0.25);
+      padding: 8px;
+    }
+
+    /* Cert-card logo wrap — slightly smaller */
+    .cert-logo-wrap {
+      width: 46px;
+      height: 46px;
+      background: #ffffff;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .cert-logo-wrap img,
+    .cert-logo-wrap svg { width: 100%; height: 100%; object-fit: contain; }
+    .cert-logo-wrap.accent {
+      background: rgba(0,180,216,0.12);
+      border: 1px solid rgba(0,180,216,0.25);
+    }
+
+    /* ============================================================
        NAVIGATION
        ============================================================ */
     nav {
@@ -514,7 +579,6 @@
     }
     .project-card:hover::before { transform: scaleX(1); }
 
-    /* Volunteer badge variant */
     .project-card.volunteer { border-color: rgba(139,92,246,0.3); }
     .project-card.volunteer::before {
       background: linear-gradient(90deg, #8b5cf6, #6d28d9);
@@ -527,8 +591,6 @@
       justify-content: space-between;
       gap: 12px;
     }
-
-    .project-icon { font-size: 1.9rem; line-height: 1; }
 
     .project-ext-link {
       color: var(--text-muted);
@@ -586,7 +648,6 @@
     .project-cta:hover { gap: 10px; }
     .project-cta.purple { color: #a78bfa; }
 
-    /* More projects link row */
     .more-projects {
       margin-top: 48px;
       text-align: center;
@@ -622,8 +683,6 @@
       border-color: var(--accent);
       transform: translateY(-3px);
     }
-
-    .cert-icon { font-size: 1.9rem; line-height: 1; flex-shrink: 0; margin-top: 2px; }
 
     .cert-title {
       font-family: var(--font-heading);
@@ -942,7 +1001,15 @@
         <!-- PROJECT 1: Salifort Motors -->
         <div class="project-card reveal">
           <div class="project-header">
-            <span class="project-icon">🏭</span>
+            <!-- Salifort Motors is a fictional Google capstone company — icon represents HR/people analytics -->
+            <div class="logo-wrap accent" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="10" r="4" stroke="#00b4d8" stroke-width="2"/>
+                <circle cx="22" cy="10" r="4" stroke="#00b4d8" stroke-width="2"/>
+                <path d="M2 26c0-4 3.6-7 8-7h12c4.4 0 8 3 8 7" stroke="#00b4d8" stroke-width="2" stroke-linecap="round"/>
+                <path d="M16 16v6M13 22h6" stroke="#00b4d8" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
             <a href="https://github.com/Rpvermaak/Google-Advanced-Data-Analytics-Projects/blob/main/Salifort%20Motor%20Capstone%20Project/Activity_%20Course%207%20Salifort%20Motors%20project%20lab.ipynb"
                target="_blank" rel="noopener" class="project-ext-link" aria-label="View on GitHub">
               <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -983,7 +1050,17 @@
         <!-- PROJECT 2: TikTok -->
         <div class="project-card reveal">
           <div class="project-header">
-            <span class="project-icon">📱</span>
+            <!-- TikTok logo — music-note shape on black pill -->
+            <div class="logo-wrap dark" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Teal shadow layer -->
+                <path d="M21 6.5c0 3.038 2.462 5.5 5.5 5.5v4c-2.16 0-4.166-.62-5.855-1.69L20.5 22A8.5 8.5 0 1 1 12 13.553V17.7a4.5 4.5 0 1 0 5 4.464V2h4a5.502 5.502 0 0 0 0 .5V6.5z" fill="#25F4EE" opacity="0.5" transform="translate(1,1)"/>
+                <!-- Red shadow layer -->
+                <path d="M21 6.5c0 3.038 2.462 5.5 5.5 5.5v4c-2.16 0-4.166-.62-5.855-1.69L20.5 22A8.5 8.5 0 1 1 12 13.553V17.7a4.5 4.5 0 1 0 5 4.464V2h4a5.502 5.502 0 0 0 0 .5V6.5z" fill="#FE2C55" opacity="0.5" transform="translate(-1,-1)"/>
+                <!-- Main white shape -->
+                <path d="M21 6.5c0 3.038 2.462 5.5 5.5 5.5v4c-2.16 0-4.166-.62-5.855-1.69L20.5 22A8.5 8.5 0 1 1 12 13.553V17.7a4.5 4.5 0 1 0 5 4.464V2h4a5.502 5.502 0 0 0 0 .5V6.5z" fill="#ffffff"/>
+              </svg>
+            </div>
             <a href="https://github.com/Rpvermaak/Google-Advanced-Data-Analytics-Projects/tree/main/TikTok-Project"
                target="_blank" rel="noopener" class="project-ext-link" aria-label="View on GitHub">
               <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1025,7 +1102,10 @@
         <!-- PROJECT 3: Waze -->
         <div class="project-card reveal">
           <div class="project-header">
-            <span class="project-icon">🗺️</span>
+            <!-- Waze logo — grayscale PNG on white pill -->
+            <div class="logo-wrap" aria-hidden="true">
+              <img src="assets/img/waze-logo.png" alt="Waze logo" />
+            </div>
             <a href="https://github.com/Rpvermaak/Google-Advanced-Data-Analytics-Projects/tree/main/Waze-Project"
                target="_blank" rel="noopener" class="project-ext-link" aria-label="View on GitHub">
               <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1066,7 +1146,10 @@
         <!-- PROJECT 4: NYC TLC -->
         <div class="project-card reveal">
           <div class="project-header">
-            <span class="project-icon">🚕</span>
+            <!-- NYC TLC official SVG logo on white pill -->
+            <div class="logo-wrap" aria-hidden="true">
+              <img src="assets/img/nyc-tlc-logo.svg" alt="NYC Taxi & Limousine Commission logo" />
+            </div>
             <a href="https://github.com/Rpvermaak/Google-Advanced-Data-Analytics-Projects/tree/main/TLC"
                target="_blank" rel="noopener" class="project-ext-link" aria-label="View on GitHub">
               <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1107,7 +1190,10 @@
         <!-- PROJECT 5: Cyclistic -->
         <div class="project-card reveal">
           <div class="project-header">
-            <span class="project-icon">🚲</span>
+            <!-- Cyclistic logo on white pill -->
+            <div class="logo-wrap" aria-hidden="true">
+              <img src="assets/img/cyclistic.png" alt="Cyclistic logo" />
+            </div>
             <a href="https://github.com/Rpvermaak/bike-share-project/blob/main/Bike_Share_Project.ipynb"
                target="_blank" rel="noopener" class="project-ext-link" aria-label="View on GitHub">
               <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1148,7 +1234,15 @@
         <!-- PROJECT 6: DataKind Volunteer -->
         <div class="project-card volunteer reveal">
           <div class="project-header">
-            <span class="project-icon">🌱</span>
+            <!-- DataKind — heart + data icon on purple pill -->
+            <div class="logo-wrap purple" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 27S4 19.5 4 11.5A6.5 6.5 0 0 1 16 7.62 6.5 6.5 0 0 1 28 11.5C28 19.5 16 27 16 27z" stroke="#a78bfa" stroke-width="2" fill="rgba(139,92,246,0.15)"/>
+                <rect x="11" y="13" width="2.5" height="7" rx="1.25" fill="#a78bfa"/>
+                <rect x="14.75" y="10" width="2.5" height="10" rx="1.25" fill="#a78bfa"/>
+                <rect x="18.5" y="15" width="2.5" height="5" rx="1.25" fill="#a78bfa"/>
+              </svg>
+            </div>
             <a href="https://github.com/Rpvermaak/datakit-smallholder-farmers-fall-2025/blob/main/Challenge%201%20_Weather%20Patterns/Ruben%20Vermaak/Challenge_1_Identifying_patterns_in_weather_and_agriculture_ruben_vermaak.ipynb"
                target="_blank" rel="noopener" class="project-ext-link" aria-label="View on GitHub">
               <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1158,7 +1252,7 @@
               </svg>
             </a>
           </div>
-          <h3 class="project-title">DataKind — Smallholder Farmers Climate Analysis <span style="font-size:0.7rem; background:rgba(139,92,246,0.15); color:#a78bfa; padding:2px 8px; border-radius:4px; margin-left:6px; font-weight:600; letter-spacing:0.05em; vertical-align:middle;">VOLUNTEER</span></h3>
+          <h3 class="project-title">DataKind — Smallholder Farmers Climate Analysis <span style="font-size:0.68rem; background:rgba(139,92,246,0.15); color:#a78bfa; padding:2px 8px; border-radius:4px; margin-left:4px; font-weight:700; letter-spacing:0.05em; vertical-align:middle;">VOLUNTEER</span></h3>
           <p class="project-description">
             <strong>Problem:</strong> Smallholder farmers in developing regions face
             unpredictable climate patterns that threaten yields, yet lack data-driven guidance
@@ -1187,7 +1281,6 @@
 
       </div>
 
-      <!-- Link to full GitHub profile for remaining projects -->
       <div class="more-projects reveal">
         <a href="https://github.com/Rpvermaak" target="_blank" rel="noopener">
           View all projects on GitHub &nbsp;→
@@ -1211,8 +1304,17 @@
 
       <div class="certs-grid">
 
+        <!-- Google Advanced Data Analytics -->
         <div class="cert-card reveal">
-          <div class="cert-icon">📈</div>
+          <!-- Google G logo (official multicolor SVG) -->
+          <div class="cert-logo-wrap">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+            </svg>
+          </div>
           <div>
             <div class="cert-title">Google Advanced Data Analytics Professional Certificate</div>
             <div class="cert-issuer">Google / Coursera</div>
@@ -1223,8 +1325,16 @@
           </div>
         </div>
 
+        <!-- Google Data Analytics -->
         <div class="cert-card reveal">
-          <div class="cert-icon">🎓</div>
+          <div class="cert-logo-wrap">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+            </svg>
+          </div>
           <div>
             <div class="cert-title">Google Data Analytics Professional Certificate</div>
             <div class="cert-issuer">Google / Coursera</div>
@@ -1235,8 +1345,17 @@
           </div>
         </div>
 
+        <!-- TEFL / TTA -->
         <div class="cert-card reveal">
-          <div class="cert-icon">🌏</div>
+          <!-- Globe + speech-bubble icon representing language teaching -->
+          <div class="cert-logo-wrap accent">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="16" cy="16" r="12" stroke="#00b4d8" stroke-width="2"/>
+              <ellipse cx="16" cy="16" rx="5" ry="12" stroke="#00b4d8" stroke-width="2"/>
+              <line x1="4" y1="16" x2="28" y2="16" stroke="#00b4d8" stroke-width="2"/>
+              <path d="M7 10h18M7 22h18" stroke="#00b4d8" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
           <div>
             <div class="cert-title">Teaching English as a Foreign Language (TEFL) — 160 hours</div>
             <div class="cert-issuer">TTA (The TEFL Academy)</div>
@@ -1245,8 +1364,17 @@
           </div>
         </div>
 
+        <!-- BCom / Pearson -->
         <div class="cert-card reveal">
-          <div class="cert-icon">🏫</div>
+          <!-- Graduation cap icon -->
+          <div class="cert-logo-wrap accent">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 7L3 13l13 6 13-6-13-6z" stroke="#00b4d8" stroke-width="2" stroke-linejoin="round" fill="rgba(0,180,216,0.12)"/>
+              <path d="M8 16.5V23c0 2.21 3.58 4 8 4s8-1.79 8-4v-6.5" stroke="#00b4d8" stroke-width="2" stroke-linecap="round"/>
+              <line x1="29" y1="13" x2="29" y2="20" stroke="#00b4d8" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="29" cy="21.5" r="1.5" fill="#00b4d8"/>
+            </svg>
+          </div>
           <div>
             <div class="cert-title">Bachelor of Commerce</div>
             <div class="cert-issuer">Pearson Institute of Higher Education</div>
@@ -1411,6 +1539,8 @@
   2.  Click  "Add file"  →  "Upload files"
 
   3.  Drag this index.html into the upload zone.
+      IMPORTANT: Also drag the entire "assets" folder — the project
+      logos (Waze, Cyclistic, NYC TLC) will not load without it.
       Add cv.pdf at the same time if you have it ready.
 
   4.  In the "Commit changes" box, type something like:
@@ -1432,10 +1562,10 @@
         git clone https://github.com/<yourusername>/<yourusername>.github.io
         cd <yourusername>.github.io
 
-  2.  Copy index.html (and cv.pdf) into that folder.
+  2.  Copy index.html AND the assets/ folder into that directory.
 
   3.  Commit and push:
-        git add index.html cv.pdf
+        git add index.html assets/ cv.pdf
         git commit -m "Add portfolio site"
         git push origin main
 
@@ -1458,8 +1588,8 @@
   TROUBLESHOOTING
   ───────────────
   • 404 error?           Check the file is named exactly:  index.html
+  • Logos not showing?   Make sure the assets/ folder was uploaded too
   • Pages not enabled?   Settings → Pages → Source → "Deploy from branch" → main
-  • Fonts not loading?   They load from Google — check your internet connection
   • Seeing old version?  Hard-refresh: Cmd+Shift+R (Mac) / Ctrl+Shift+R (Windows)
   ================================================================
   -->
