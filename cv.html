@@ -383,6 +383,32 @@
       border-top: 1px solid var(--navy-border);
     }
 
+    /* ---- Header stats strip ---- */
+    .cv-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 28px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--navy-border);
+    }
+    .cv-stat {
+      display: flex;
+      align-items: baseline;
+      gap: 7px;
+    }
+    .cv-stat-number {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .cv-stat-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
     /* ---- Languages ---- */
     .cv-langs { display: flex; gap: 24px; flex-wrap: wrap; }
     .cv-lang {
@@ -503,6 +529,14 @@
       }
       .cv-project-link { color: #888 !important; }
 
+      .cv-stats {
+        border-top-color: #dde3ed !important;
+        margin-top: 12pt !important;
+        padding-top: 12pt !important;
+      }
+      .cv-stat-number { color: #00b4d8 !important; font-size: 11pt !important; }
+      .cv-stat-label { color: #666 !important; }
+
       .cv-lang { color: #333 !important; }
       .cv-lang strong { color: #111 !important; }
 
@@ -564,6 +598,14 @@
         <div class="cv-contacts">
           <div class="cv-contact-item">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <a href="index.html">rubenvermaak.github.io</a>
+          </div>
+          <div class="cv-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
               <circle cx="12" cy="10" r="3"/>
             </svg>
@@ -591,6 +633,26 @@
             <a href="https://github.com/Rpvermaak" target="_blank" rel="noopener">github.com/Rpvermaak</a>
           </div>
         </div>
+
+        <!-- Quick-scan stats strip -->
+        <div class="cv-stats">
+          <div class="cv-stat">
+            <span class="cv-stat-number">8+</span>
+            <span class="cv-stat-label">Portfolio Projects</span>
+          </div>
+          <div class="cv-stat">
+            <span class="cv-stat-number">2</span>
+            <span class="cv-stat-label">Google Certifications</span>
+          </div>
+          <div class="cv-stat">
+            <span class="cv-stat-number">BCom</span>
+            <span class="cv-stat-label">Commerce Degree</span>
+          </div>
+          <div class="cv-stat">
+            <span class="cv-stat-number">5+</span>
+            <span class="cv-stat-label">Years Business Experience</span>
+          </div>
+        </div>
       </header>
 
       <!-- BODY -->
@@ -601,75 +663,56 @@
           <h2 class="cv-section-heading">Professional Summary</h2>
           <!-- EDIT: Update your summary paragraph here -->
           <p class="cv-summary">
-            Data analyst with a <strong>Bachelor of Commerce</strong>, Google Advanced Data Analytics certification,
-            and hands-on experience running a business from the ground up. I bring both analytical rigour and
-            practical business judgment to every dataset — translating complex data into decisions that make
-            sense to stakeholders. Proficient in Python, SQL, R, and Tableau, with a portfolio of real-world
-            projects spanning machine learning, statistical analysis, and data storytelling.
-            <strong>Ready to contribute full-time to a data-driven team.</strong>
+            <strong>Google-certified data analyst</strong> (Advanced + Foundation) with a BCom and a public portfolio
+            of 8+ machine learning and analytics projects. Most analysts can run a model — I can also explain
+            to a business why it matters: five years of founding and running a company taught me to make
+            data-driven decisions under pressure before I formalised it into a career. Two years of
+            self-directed study in South Korea, completing two Google certifications while employed full-time,
+            prove I deliver on what I commit to.
+            <strong>Open to remote roles or relocation.</strong>
           </p>
         </section>
 
-        <!-- ---- EXPERIENCE ---- -->
+        <!-- ---- SKILLS ---- -->
         <section class="cv-section">
-          <h2 class="cv-section-heading">Experience</h2>
-          <div class="cv-entries">
+          <h2 class="cv-section-heading">Skills &amp; Toolkit</h2>
+          <div class="cv-skills-grid">
 
-            <!-- EDIT: Update or add experience entries here -->
-            <div class="cv-entry">
-              <div class="cv-entry-top">
-                <div>
-                  <div class="cv-entry-title">English Teacher</div>
-                  <div class="cv-entry-org">South Korea</div>
-                </div>
-                <div class="cv-entry-meta">2024 – Present</div>
-              </div>
-              <div class="cv-entry-body">
-                <ul>
-                  <li>Developed and delivered structured lesson plans while pursuing two Google Data Analytics certifications concurrently.</li>
-                  <li>Built strong cross-cultural communication skills working with Korean students of varied proficiency levels.</li>
-                  <li>Completed 8+ data analytics projects and a DataKind volunteer engagement alongside full-time teaching.</li>
-                </ul>
+            <!-- EDIT: Add/remove skill badges here -->
+            <div>
+              <div class="cv-skill-group-label">Technical</div>
+              <div class="cv-badges">
+                <span class="cv-badge">Python</span>
+                <span class="cv-badge">Pandas</span>
+                <span class="cv-badge">NumPy</span>
+                <span class="cv-badge">Scikit-learn</span>
+                <span class="cv-badge">SQL</span>
+                <span class="cv-badge">R</span>
+                <span class="cv-badge">Tableau</span>
+                <span class="cv-badge">Matplotlib</span>
+                <span class="cv-badge">Seaborn</span>
+                <span class="cv-badge">Jupyter Notebooks</span>
+                <span class="cv-badge">Excel / Google Sheets</span>
+                <span class="cv-badge">Git &amp; GitHub</span>
+                <span class="cv-badge">EDA</span>
+                <span class="cv-badge">Machine Learning</span>
+                <span class="cv-badge">Logistic Regression</span>
+                <span class="cv-badge">Random Forest</span>
+                <span class="cv-badge">Statistical Analysis</span>
               </div>
             </div>
 
-            <div class="cv-entry">
-              <div class="cv-entry-top">
-                <div>
-                  <div class="cv-entry-title">Founder &amp; Director</div>
-                  <div class="cv-entry-org">Vermaak Brewing Company</div>
-                </div>
-                <div class="cv-entry-meta">2019 – 2023</div>
-              </div>
-              <div class="cv-entry-body">
-                <ul>
-                  <li>Founded and operated a craft brewery from inception — covering recipe development, production scheduling, supply chain management, and distribution.</li>
-                  <li>Applied data-driven decision-making daily: tracked sales performance, modelled production costs, and optimised batch scheduling to maximise yield and margin.</li>
-                  <li>Managed supplier and client relationships, staff, and regulatory compliance across all business functions.</li>
-                  <li>Developed strong financial acumen through hands-on P&amp;L management and cash-flow forecasting.</li>
-                </ul>
-              </div>
-            </div>
-
-          </div>
-        </section>
-
-        <!-- ---- EDUCATION ---- -->
-        <section class="cv-section">
-          <h2 class="cv-section-heading">Education</h2>
-          <div class="cv-entries">
-
-            <!-- EDIT: Update or add education entries here -->
-            <div class="cv-entry">
-              <div class="cv-entry-top">
-                <div>
-                  <div class="cv-entry-title">Bachelor of Commerce (BCom)</div>
-                  <div class="cv-entry-org">Pearson Institute of Higher Education</div>
-                </div>
-                <div class="cv-entry-meta">2015 – 2019</div>
-              </div>
-              <div class="cv-entry-body">
-                Foundation in accounting, finance, economics, and management — providing a business lens that informs analytical work at every level.
+            <div>
+              <div class="cv-skill-group-label">Professional</div>
+              <div class="cv-badges">
+                <span class="cv-badge">Business Acumen</span>
+                <span class="cv-badge">Entrepreneurship</span>
+                <span class="cv-badge">Stakeholder Reporting</span>
+                <span class="cv-badge">Technical Communication</span>
+                <span class="cv-badge">Cross-cultural Communication</span>
+                <span class="cv-badge">P&amp;L Management</span>
+                <span class="cv-badge">Problem Decomposition</span>
+                <span class="cv-badge">Self-directed Learning</span>
               </div>
             </div>
 
@@ -709,52 +752,6 @@
           </div>
         </section>
 
-        <!-- ---- SKILLS ---- -->
-        <section class="cv-section">
-          <h2 class="cv-section-heading">Skills &amp; Toolkit</h2>
-          <div class="cv-skills-grid">
-
-            <!-- EDIT: Add/remove skill badges here -->
-            <div>
-              <div class="cv-skill-group-label">Technical</div>
-              <div class="cv-badges">
-                <span class="cv-badge">Python</span>
-                <span class="cv-badge">Pandas</span>
-                <span class="cv-badge">NumPy</span>
-                <span class="cv-badge">Scikit-learn</span>
-                <span class="cv-badge">SQL</span>
-                <span class="cv-badge">R</span>
-                <span class="cv-badge">Tableau</span>
-                <span class="cv-badge">Matplotlib</span>
-                <span class="cv-badge">Seaborn</span>
-                <span class="cv-badge">Jupyter Notebooks</span>
-                <span class="cv-badge">Excel / Google Sheets</span>
-                <span class="cv-badge">Git &amp; GitHub</span>
-                <span class="cv-badge">EDA</span>
-                <span class="cv-badge">Machine Learning</span>
-                <span class="cv-badge">Logistic Regression</span>
-                <span class="cv-badge">Random Forest</span>
-                <span class="cv-badge">Statistical Analysis</span>
-              </div>
-            </div>
-
-            <div>
-              <div class="cv-skill-group-label">Professional</div>
-              <div class="cv-badges">
-                <span class="cv-badge">Business Acumen</span>
-                <span class="cv-badge">Entrepreneurship</span>
-                <span class="cv-badge">Technical Communication</span>
-                <span class="cv-badge">Stakeholder Reporting</span>
-                <span class="cv-badge">Cross-cultural Communication</span>
-                <span class="cv-badge">Leadership &amp; Management</span>
-                <span class="cv-badge">Problem Decomposition</span>
-                <span class="cv-badge">Self-directed Learning</span>
-              </div>
-            </div>
-
-          </div>
-        </section>
-
         <!-- ---- SELECTED PROJECTS ---- -->
         <section class="cv-section">
           <h2 class="cv-section-heading">Selected Projects</h2>
@@ -766,7 +763,7 @@
                 <div class="cv-project-title">Salifort Motors — HR Churn Prediction</div>
                 <div class="cv-project-link"><a href="https://github.com/Rpvermaak/Google-Advanced-Data-Analytics-Projects" target="_blank" rel="noopener">GitHub ↗</a></div>
               </div>
-              <p class="cv-project-desc">Built and compared Logistic Regression and Random Forest classifiers to predict employee churn. Random Forest achieved <strong>98%+ accuracy</strong>, surfacing satisfaction score, monthly hours, and promotion history as the strongest predictors. Delivered an actionable retention strategy.</p>
+              <p class="cv-project-desc">Designed and compared Logistic Regression and Random Forest classifiers to identify employees at risk of leaving. <strong>Random Forest achieved 98%+ accuracy</strong>, pinpointing satisfaction score, overtime hours, and promotion history as the strongest churn drivers. Packaged findings into a concrete HR retention brief.</p>
               <div class="cv-project-tags">
                 <span class="cv-project-tag">Python</span>
                 <span class="cv-project-tag">Scikit-learn</span>
@@ -781,7 +778,7 @@
                 <div class="cv-project-title">TikTok — Claims vs. Opinions Classifier</div>
                 <div class="cv-project-link"><a href="https://github.com/Rpvermaak/Google-Advanced-Data-Analytics-Projects" target="_blank" rel="noopener">GitHub ↗</a></div>
               </div>
-              <p class="cv-project-desc">Engineered features from engagement metrics and caption text to classify TikTok content as factual claims or opinions. Achieved <strong>99% accuracy</strong> on the test set, supporting scalable automated content moderation.</p>
+              <p class="cv-project-desc">Engineered engagement-based features from video caption data to automate content moderation at scale. <strong>Achieved 99% classification accuracy</strong> on the test set, identifying the behavioural signals that reliably separate factual claims from opinions.</p>
               <div class="cv-project-tags">
                 <span class="cv-project-tag">Python</span>
                 <span class="cv-project-tag">Scikit-learn</span>
@@ -796,7 +793,7 @@
                 <div class="cv-project-title">Cyclistic — Bike Share Conversion Analysis</div>
                 <div class="cv-project-link"><a href="https://github.com/Rpvermaak/bike-share-project" target="_blank" rel="noopener">GitHub ↗</a></div>
               </div>
-              <p class="cv-project-desc">SQL extraction across 12 months of trip data; Tableau dashboard exposing three distinct behavioural patterns separating casual riders from annual members. Recommendations delivered as an executive-ready Tableau dashboard.</p>
+              <p class="cv-project-desc">Extracted and aggregated 12 months of trip data in SQL, then built a Tableau dashboard that exposed <strong>three distinct usage patterns</strong> separating casual riders from members. Translated findings into a subscription conversion strategy presented in an executive-ready dashboard.</p>
               <div class="cv-project-tags">
                 <span class="cv-project-tag">SQL</span>
                 <span class="cv-project-tag">Tableau</span>
@@ -810,12 +807,78 @@
                 <div class="cv-project-title">DataKind — Smallholder Farmers Climate Analysis <span style="font-size:0.68rem; font-weight:700; color:#a78bfa;">[VOLUNTEER]</span></div>
                 <div class="cv-project-link"><a href="https://github.com/Rpvermaak/datakit-smallholder-farmers-fall-2025" target="_blank" rel="noopener">GitHub ↗</a></div>
               </div>
-              <p class="cv-project-desc">Contributed to a DataKind data science challenge (Nov–Dec 2025), identifying patterns in historical weather and agricultural data to inform planting recommendations for smallholder farmers in developing regions.</p>
+              <p class="cv-project-desc">Volunteered on a DataKind data science challenge (Nov–Dec 2025), analysing historical weather and agricultural datasets to surface seasonal patterns informing planting recommendations for smallholder farmers in developing regions.</p>
               <div class="cv-project-tags">
                 <span class="cv-project-tag">Python</span>
                 <span class="cv-project-tag">Climate Data</span>
                 <span class="cv-project-tag">EDA</span>
                 <span class="cv-project-tag">Social Impact</span>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ---- EXPERIENCE ---- -->
+        <section class="cv-section">
+          <h2 class="cv-section-heading">Experience</h2>
+          <div class="cv-entries">
+
+            <!-- EDIT: Update or add experience entries here -->
+            <div class="cv-entry">
+              <div class="cv-entry-top">
+                <div>
+                  <div class="cv-entry-title">English Teacher</div>
+                  <div class="cv-entry-org">South Korea</div>
+                </div>
+                <div class="cv-entry-meta">2024 – Present</div>
+              </div>
+              <div class="cv-entry-body">
+                <ul>
+                  <li>Earned two Google Data Analytics certifications (160+ hours of coursework) while teaching full-time — demonstrating the discipline to learn and perform simultaneously.</li>
+                  <li>Delivered 8+ end-to-end analytics projects and a DataKind volunteer engagement outside work hours, building a fully public, verifiable portfolio while employed.</li>
+                  <li>Adapted communication style daily for diverse student audiences — developing the ability to explain complex ideas clearly, directly applicable to presenting data insights to non-technical stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-entry-top">
+                <div>
+                  <div class="cv-entry-title">Founder &amp; Director</div>
+                  <div class="cv-entry-org">Vermaak Brewing Company</div>
+                </div>
+                <div class="cv-entry-meta">2019 – 2023</div>
+              </div>
+              <div class="cv-entry-body">
+                <ul>
+                  <li>Launched a craft brewery from zero — designing production systems, securing supplier contracts, and scaling distribution while managing full P&amp;L from day one.</li>
+                  <li>Built cost models and sales dashboards from scratch to optimise batch scheduling and protect margin — applying the same quantitative reasoning now used in Python and SQL.</li>
+                  <li>Negotiated supplier and client relationships, managed staff, and maintained regulatory compliance across production, finance, and distribution.</li>
+                  <li>Sustained business viability through rolling cash-flow forecasts and disciplined P&amp;L management, embedding a financially-minded approach into every analysis produced.</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ---- EDUCATION ---- -->
+        <section class="cv-section">
+          <h2 class="cv-section-heading">Education</h2>
+          <div class="cv-entries">
+
+            <!-- EDIT: Update or add education entries here -->
+            <div class="cv-entry">
+              <div class="cv-entry-top">
+                <div>
+                  <div class="cv-entry-title">Bachelor of Commerce (BCom)</div>
+                  <div class="cv-entry-org">Pearson Institute of Higher Education</div>
+                </div>
+                <div class="cv-entry-meta">2015 – 2019</div>
+              </div>
+              <div class="cv-entry-body">
+                Majored in accounting, finance, economics, and management — providing the commercial foundation that underpins every analysis and makes data relevant to business decisions.
               </div>
             </div>
 
