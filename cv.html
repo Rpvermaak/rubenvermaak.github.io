@@ -1,1094 +1,389 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ruben Vermaak — CV</title>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Calibri:wght@400;700&display=swap');
 
-  <!-- Google Fonts (same as portfolio) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  <style>
-    /* ============================================================
-       SCREEN THEME — matches the portfolio site
-       ============================================================ */
-    :root {
-      --navy:          #0a1628;
-      --navy-mid:      #0f2040;
-      --navy-card:     #142238;
-      --navy-border:   #1e3355;
-      --accent:        #00b4d8;
-      --accent-dark:   #0089a7;
-      --text-primary:  #e2e8f0;
-      --text-secondary:#94a3b8;
-      --text-muted:    #64748b;
-      --font-heading:  'Space Grotesk', sans-serif;
-      --font-body:     'Inter', sans-serif;
-      --radius:        10px;
-    }
+  body {
+    font-family: 'Calibri', Arial, Helvetica, sans-serif;
+    font-size: 10.5pt;
+    color: #1A1A1A;
+    background: #fff;
+    line-height: 1.45;
+  }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+  /* ─── PAGE ─────────────────────────────────────────────── */
+  @page {
+    size: A4;
+    margin: 17mm 18mm 17mm 18mm;
+  }
 
-    body {
-      background: var(--navy);
-      color: var(--text-primary);
-      font-family: var(--font-body);
-      font-size: 15px;
-      line-height: 1.7;
-      min-height: 100vh;
-    }
+  /* ─── HEADER ────────────────────────────────────────────── */
+  .header { margin-bottom: 4pt; }
 
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+  h1.name {
+    font-size: 28pt;
+    font-weight: 700;
+    color: #1B4F72;
+    letter-spacing: -0.5px;
+    margin-bottom: 4pt;
+  }
 
-    /* ---- Top bar with nav + print button ---- */
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(10,22,40,0.92);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--navy-border);
-      padding: 14px 0;
-    }
-    .topbar-inner {
-      max-width: 820px;
-      margin: 0 auto;
-      padding: 0 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .topbar-logo {
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--text-primary);
-      letter-spacing: 0.03em;
-    }
-    .topbar-logo span { color: var(--accent); }
+  .tagline {
+    font-size: 13pt;
+    color: #2471A3;
+    margin-bottom: 6pt;
+  }
 
-    .topbar-actions { display: flex; gap: 12px; align-items: center; }
+  .contact {
+    font-size: 8.5pt;
+    color: #666666;
+  }
 
-    .btn-print {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 9px 20px;
-      border-radius: 7px;
-      font-family: var(--font-body);
-      font-size: 0.83rem;
-      font-weight: 600;
-      cursor: pointer;
-      border: 2px solid var(--accent);
-      background: var(--accent);
-      color: var(--navy);
-      transition: all 0.25s ease;
-      text-decoration: none !important;
-    }
-    .btn-print:hover {
-      background: var(--accent-dark);
-      border-color: var(--accent-dark);
-      transform: translateY(-1px);
-    }
-    .btn-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 9px 18px;
-      border-radius: 7px;
-      font-size: 0.83rem;
-      font-weight: 600;
-      border: 2px solid var(--navy-border);
-      background: transparent;
-      color: var(--text-secondary);
-      transition: all 0.25s ease;
-      text-decoration: none !important;
-    }
-    .btn-back:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      text-decoration: none;
-    }
+  .divider {
+    border: none;
+    border-bottom: 1px solid #BBBBBB;
+    margin: 8pt 0 10pt;
+  }
 
-    /* ---- CV wrapper ---- */
-    .cv-wrapper {
-      max-width: 820px;
-      margin: 40px auto 80px;
-      padding: 0 32px;
-    }
+  /* ─── SECTION HEADERS ───────────────────────────────────── */
+  .section-head {
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: #1B4F72;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    border-bottom: 1.5px solid #2471A3;
+    padding-bottom: 3pt;
+    margin: 14pt 0 7pt;
+  }
 
-    /* ---- CV card (the actual document) ---- */
-    .cv-card {
-      background: var(--navy-card);
-      border: 1px solid var(--navy-border);
-      border-radius: 14px;
-      overflow: hidden;
-    }
+  /* ─── SUMMARY ───────────────────────────────────────────── */
+  .summary {
+    font-size: 10.5pt;
+    color: #1A1A1A;
+    line-height: 1.5;
+  }
 
-    /* ---- Header ---- */
-    .cv-header {
-      padding: 44px 52px 36px;
-      background: linear-gradient(135deg, var(--navy-mid) 0%, #0d1e38 100%);
-      border-bottom: 1px solid var(--navy-border);
-      position: relative;
-      overflow: hidden;
-    }
-    .cv-header::before {
-      content: '';
-      position: absolute;
-      top: -60px; right: -60px;
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(0,180,216,0.10) 0%, transparent 70%);
-      pointer-events: none;
-    }
+  /* ─── SKILLS TABLE ──────────────────────────────────────── */
+  .skills-grid {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5pt;
+  }
+  .skills-col {
+    display: table-cell;
+    width: 50%;
+    vertical-align: top;
+    padding: 6pt 10pt;
+  }
+  .skills-col:first-child { padding-left: 0; }
+  .skills-col:last-child  { padding-right: 0; }
 
-    .cv-name {
-      font-family: var(--font-heading);
-      font-size: 2.4rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      line-height: 1.1;
-      margin-bottom: 6px;
-    }
-    .cv-name span { color: var(--accent); }
+  .skills-col-header {
+    background: #D6EAF8;
+    font-weight: 700;
+    font-size: 9.5pt;
+    color: #1B4F72;
+    padding: 5pt 8pt;
+    margin-bottom: 5pt;
+  }
+  .skills-col-header:first-child { margin-right: 2pt; }
 
-    .cv-title {
-      font-family: var(--font-heading);
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      margin-bottom: 22px;
-      letter-spacing: 0.02em;
-    }
+  .skill-line {
+    font-size: 9.5pt;
+    color: #1A1A1A;
+    margin-bottom: 2pt;
+  }
 
-    .cv-contacts {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 24px;
-    }
-    .cv-contact-item {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-    }
-    .cv-contact-item svg {
-      width: 14px; height: 14px;
-      stroke: var(--accent);
-      flex-shrink: 0;
-    }
-    .cv-contact-item a { color: var(--text-secondary); }
-    .cv-contact-item a:hover { color: var(--accent); }
+  /* ─── PROJECTS ──────────────────────────────────────────── */
+  .proj-name {
+    font-size: 10.5pt;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin-top: 9pt;
+    margin-bottom: 1pt;
+  }
+  .proj-tech {
+    font-size: 8.5pt;
+    color: #2471A3;
+    font-style: italic;
+    margin-bottom: 3pt;
+  }
 
-    /* ---- Body ---- */
-    .cv-body {
-      padding: 44px 52px;
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-    }
+  /* ─── BULLETS ───────────────────────────────────────────── */
+  ul.cv-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  ul.cv-list li {
+    font-size: 10pt;
+    color: #1A1A1A;
+    padding-left: 14pt;
+    text-indent: -14pt;
+    margin-bottom: 2pt;
+    line-height: 1.45;
+  }
+  ul.cv-list li::before {
+    content: "\2013\00a0\00a0"; /* en-dash + spaces */
+    color: #2471A3;
+  }
 
-    /* ---- Section ---- */
-    .cv-section {}
+  /* ─── JOB HEADERS ───────────────────────────────────────── */
+  .job-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 10pt;
+    margin-bottom: 1pt;
+  }
+  .job-title  { font-size: 10.5pt; font-weight: 700; color: #1A1A1A; }
+  .job-dates  { font-size: 9pt; color: #999999; white-space: nowrap; padding-left: 8pt; }
+  .job-sub    { font-size: 9.5pt; color: #555555; font-style: italic; margin-bottom: 4pt; }
 
-    .cv-section-heading {
-      font-family: var(--font-heading);
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 18px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--navy-border);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .cv-section-heading::before {
-      content: '';
-      display: block;
-      width: 20px; height: 2px;
-      background: var(--accent);
-      flex-shrink: 0;
-    }
+  /* ─── EDUCATION ─────────────────────────────────────────── */
+  .edu-row    {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 8pt;
+    margin-bottom: 1pt;
+  }
+  .edu-degree { font-size: 10.5pt; font-weight: 700; color: #1A1A1A; }
+  .edu-dates  { font-size: 9pt; color: #999999; }
+  .edu-inst   { font-size: 9.5pt; color: #555555; font-style: italic; margin-bottom: 3pt; }
+  .edu-note   { font-size: 9.5pt; color: #1A1A1A; margin-bottom: 4pt; }
 
-    /* ---- Summary ---- */
-    .cv-summary {
-      font-size: 0.93rem;
-      color: var(--text-secondary);
-      line-height: 1.75;
-    }
-    .cv-summary strong { color: var(--text-primary); }
+  /* ─── CERTS ─────────────────────────────────────────────── */
+  .cert-line  { font-size: 9.5pt; color: #1A1A1A; margin-bottom: 3pt; }
+  .cert-name  { font-weight: 700; }
+  .cert-sub   { color: #555555; }
 
-    /* ---- Experience & Education entries ---- */
-    .cv-entries { display: flex; flex-direction: column; gap: 28px; }
+  /* ─── LANGUAGES ─────────────────────────────────────────── */
+  .lang-line  { font-size: 10pt; margin-top: 5pt; }
 
-    .cv-entry {}
-
-    .cv-entry-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 6px;
-      flex-wrap: wrap;
-    }
-
-    .cv-entry-title {
-      font-family: var(--font-heading);
-      font-size: 0.97rem;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-    .cv-entry-org {
-      font-size: 0.85rem;
-      color: var(--accent);
-      font-weight: 500;
-      margin-bottom: 4px;
-    }
-    .cv-entry-meta {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      white-space: nowrap;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .cv-entry-body {
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-    }
-    .cv-entry-body ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      margin-top: 8px;
-    }
-    .cv-entry-body li {
-      padding-left: 16px;
-      position: relative;
-    }
-    .cv-entry-body li::before {
-      content: '▸';
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-size: 0.7rem;
-      top: 4px;
-    }
-    .cv-entry-body strong { color: var(--text-primary); }
-
-    /* ---- Skills ---- */
-    .cv-skills-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-    .cv-skill-group-label {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 10px;
-    }
-    .cv-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
-    .cv-badge {
-      padding: 4px 11px;
-      border-radius: 5px;
-      font-size: 0.76rem;
-      font-weight: 500;
-      background: var(--navy-mid);
-      color: var(--text-secondary);
-      border: 1px solid var(--navy-border);
-    }
-
-    /* ---- Certifications ---- */
-    .cv-certs { display: flex; flex-direction: column; gap: 14px; }
-
-    .cv-cert {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .cv-cert-left {}
-    .cv-cert-name {
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-    .cv-cert-issuer {
-      font-size: 0.8rem;
-      color: var(--accent);
-      margin-top: 1px;
-    }
-    .cv-cert-date {
-      font-size: 0.76rem;
-      color: var(--text-muted);
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    /* ---- Projects (compact) ---- */
-    .cv-projects { display: flex; flex-direction: column; gap: 18px; }
-
-    .cv-project {}
-    .cv-project-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 4px;
-    }
-    .cv-project-title {
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-    .cv-project-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
-    .cv-project-tag {
-      padding: 2px 8px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      border-radius: 4px;
-      background: rgba(0,180,216,0.10);
-      color: var(--accent);
-    }
-    .cv-project-desc {
-      font-size: 0.84rem;
-      color: var(--text-secondary);
-      line-height: 1.65;
-    }
-    .cv-project-link {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    /* ---- Project badge labels (Real Client / Volunteer etc.) ---- */
-    .cv-project-badge {
-      font-size: 0.68rem;
-      font-weight: 700;
-      vertical-align: middle;
-      margin-left: 6px;
-      letter-spacing: 0.04em;
-    }
-    .cv-project-badge--green { color: #22c55e; }
-    .cv-project-badge--purple { color: #a78bfa; }
-
-    /* ---- Divider between projects ---- */
-    .cv-project + .cv-project {
-      padding-top: 18px;
-      border-top: 1px solid var(--navy-border);
-    }
-
-    /* ---- Header stats strip ---- */
-    .cv-stats {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 28px;
-      margin-top: 20px;
-      padding-top: 20px;
-      border-top: 1px solid var(--navy-border);
-    }
-    .cv-stat {
-      display: flex;
-      align-items: baseline;
-      gap: 7px;
-    }
-    .cv-stat-number {
-      font-family: var(--font-heading);
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--accent);
-      line-height: 1;
-    }
-    .cv-stat-label {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    /* ---- Languages ---- */
-    .cv-langs { display: flex; gap: 24px; flex-wrap: wrap; }
-    .cv-lang {
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-    }
-    .cv-lang strong { color: var(--text-primary); }
-
-    /* ============================================================
-       PRINT STYLESHEET — clean white CV for PDF export
-       ============================================================ */
-    @media print {
-      @page {
-        size: A4;
-        margin: 14mm 18mm;
-      }
-
-      * {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
-
-      /* === BASE === */
-      body {
-        background: #fff !important;
-        color: #1a1a1a !important;
-        font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif !important;
-        font-size: 9.5pt !important;
-        line-height: 1.55 !important;
-      }
-
-      a { color: #1a1a1a !important; text-decoration: none !important; }
-
-      /* === HIDE WEB-ONLY ELEMENTS === */
-      .topbar          { display: none !important; }
-      .cv-stats        { display: none !important; }
-      .cv-project-badge { display: none !important; }
-
-      /* === LAYOUT === */
-      .cv-wrapper {
-        max-width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-      }
-
-      .cv-card {
-        background: #fff !important;
-        border: none !important;
-        border-radius: 0 !important;
-        box-shadow: none !important;
-      }
-
-      /* === HEADER === */
-      .cv-header {
-        background: #fff !important;
-        border-bottom: 1.5pt solid #1a1a1a !important;
-        padding: 0 0 12pt 0 !important;
-        margin-bottom: 0 !important;
-      }
-      .cv-header::before { display: none !important; }
-
-      .cv-name {
-        font-size: 24pt !important;
-        font-weight: 700 !important;
-        color: #1a1a1a !important;
-        letter-spacing: -0.01em !important;
-      }
-      .cv-name span { color: #1a1a1a !important; }
-
-      .cv-title {
-        font-size: 10.5pt !important;
-        color: #444 !important;
-        font-weight: 400 !important;
-        margin-bottom: 10pt !important;
-      }
-
-      .cv-contacts {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        gap: 4pt 18pt !important;
-      }
-      .cv-contact-item {
-        font-size: 8.5pt !important;
-        color: #444 !important;
-      }
-      .cv-contact-item a { color: #444 !important; }
-      .cv-contact-item svg { stroke: #555 !important; }
-
-      /* === BODY === */
-      .cv-body {
-        padding: 14pt 0 0 0 !important;
-        gap: 16pt !important;
-      }
-
-      /* === SECTION HEADINGS === */
-      .cv-section-heading {
-        font-size: 7pt !important;
-        font-weight: 700 !important;
-        letter-spacing: 0.14em !important;
-        color: #1a1a1a !important;
-        border-bottom: 1pt solid #bbb !important;
-        margin-bottom: 10pt !important;
-        padding-bottom: 4pt !important;
-      }
-      .cv-section-heading::before { display: none !important; }
-
-      /* === SUMMARY === */
-      .cv-summary {
-        font-size: 9pt !important;
-        color: #333 !important;
-        line-height: 1.65 !important;
-      }
-      .cv-summary strong { color: #1a1a1a !important; }
-
-      /* === EXPERIENCE / EDUCATION ENTRIES === */
-      .cv-entries { gap: 12pt !important; }
-
-      .cv-entry-top { margin-bottom: 3pt !important; }
-
-      .cv-entry-title {
-        font-size: 9.5pt !important;
-        font-weight: 700 !important;
-        color: #1a1a1a !important;
-      }
-      .cv-entry-org {
-        font-size: 9pt !important;
-        font-weight: 500 !important;
-        color: #555 !important;
-      }
-      .cv-entry-meta {
-        font-size: 8.5pt !important;
-        color: #666 !important;
-      }
-      .cv-entry-body {
-        font-size: 9pt !important;
-        color: #333 !important;
-      }
-      .cv-entry-body li::before {
-        content: '–' !important;
-        color: #999 !important;
-        font-size: 9pt !important;
-        top: 0 !important;
-      }
-      .cv-entry-body strong { color: #1a1a1a !important; }
-
-      /* === SKILLS — plain comma-separated text === */
-      .cv-skills-grid {
-        grid-template-columns: 1fr 1fr !important;
-        gap: 10pt !important;
-      }
-      .cv-skill-group-label {
-        font-size: 8.5pt !important;
-        font-weight: 700 !important;
-        color: #1a1a1a !important;
-        margin-bottom: 4pt !important;
-        display: block !important;
-      }
-      .cv-badges { display: block !important; }
-      .cv-badge {
-        display: inline !important;
-        background: none !important;
-        border: none !important;
-        border-radius: 0 !important;
-        padding: 0 !important;
-        font-size: 9pt !important;
-        color: #444 !important;
-      }
-      .cv-badge::after {
-        content: ' · ';
-        color: #bbb !important;
-      }
-      .cv-badge:last-child::after { content: '' !important; }
-
-      /* === CERTIFICATIONS === */
-      .cv-certs { gap: 9pt !important; }
-      .cv-cert-name {
-        font-size: 9pt !important;
-        font-weight: 600 !important;
-        color: #1a1a1a !important;
-      }
-      .cv-cert-issuer {
-        font-size: 8.5pt !important;
-        color: #555 !important;
-      }
-      .cv-cert-issuer a { color: #555 !important; }
-      .cv-cert-date {
-        font-size: 8.5pt !important;
-        color: #666 !important;
-      }
-
-      /* === PROJECTS === */
-      .cv-projects { gap: 10pt !important; }
-      .cv-project + .cv-project {
-        padding-top: 10pt !important;
-        border-top: 0.5pt solid #ddd !important;
-      }
-      .cv-project-top { margin-bottom: 3pt !important; }
-      .cv-project-title {
-        font-size: 9.5pt !important;
-        font-weight: 700 !important;
-        color: #1a1a1a !important;
-      }
-      .cv-project-desc {
-        font-size: 8.5pt !important;
-        color: #333 !important;
-        line-height: 1.6 !important;
-      }
-      .cv-project-desc strong { color: #1a1a1a !important; }
-      .cv-project-link {
-        font-size: 8pt !important;
-        color: #666 !important;
-      }
-
-      /* Project tags — plain comma-separated */
-      .cv-project-tags {
-        display: block !important;
-        margin-top: 3pt !important;
-      }
-      .cv-project-tag {
-        display: inline !important;
-        background: none !important;
-        border: none !important;
-        border-radius: 0 !important;
-        padding: 0 !important;
-        font-size: 8pt !important;
-        font-weight: 600 !important;
-        color: #666 !important;
-      }
-      .cv-project-tag::after {
-        content: ' · ';
-        color: #bbb !important;
-        font-weight: 400 !important;
-      }
-      .cv-project-tag:last-child::after { content: '' !important; }
-
-      /* === LANGUAGES === */
-      .cv-langs { gap: 16pt !important; }
-      .cv-lang { font-size: 9pt !important; color: #333 !important; }
-      .cv-lang strong { color: #1a1a1a !important; }
-
-      /* === PAGE BREAK CONTROL === */
-      .cv-entry, .cv-cert, .cv-project { break-inside: avoid !important; }
-      .cv-section { break-inside: avoid !important; }
-    }
-
-    /* ---- Responsive ---- */
-    @media (max-width: 640px) {
-      .cv-header { padding: 30px 24px 26px; }
-      .cv-body { padding: 30px 24px; }
-      .cv-skills-grid { grid-template-columns: 1fr; }
-      .topbar-inner { padding: 0 20px; }
-    }
-  </style>
+  /* ─── PAGE BREAK CONTROL ────────────────────────────────── */
+  .no-break   { page-break-inside: avoid; }
+  .page-break { page-break-after: always; }
+</style>
 </head>
 <body>
 
-  <!-- ============================================================
-       TOP BAR
-       ============================================================ -->
-  <div class="topbar">
-    <div class="topbar-inner">
-      <span class="topbar-logo">RV<span>.</span></span>
-      <div class="topbar-actions">
-        <a href="index.html" class="btn-back">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="19" y1="12" x2="5" y2="12"/>
-            <polyline points="12 19 5 12 12 5"/>
-          </svg>
-          Portfolio
-        </a>
-        <button class="btn-print" onclick="window.print()">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="6 9 6 2 18 2 18 9"/>
-            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
-            <rect x="6" y="14" width="12" height="8"/>
-          </svg>
-          Save as PDF
-        </button>
-      </div>
-    </div>
+<!-- ════════════════════════════════════════════════════════
+     HEADER
+═════════════════════════════════════════════════════════ -->
+<div class="header">
+  <h1 class="name">Ruben Vermaak</h1>
+  <div class="tagline">Data Analyst &nbsp;·&nbsp; Google Advanced Data Analytics Certified</div>
+  <div class="contact">
+    rpvermaak.github.io &nbsp;·&nbsp;
+    Seoul, South Korea &nbsp;·&nbsp;
+    rpvermaak123@gmail.com &nbsp;·&nbsp;
+    linkedin.com/in/ruben-vermaak-data &nbsp;·&nbsp;
+    github.com/Rpvermaak
   </div>
+</div>
 
+<hr class="divider">
 
-  <!-- ============================================================
-       CV DOCUMENT
-       ============================================================ -->
-  <div class="cv-wrapper">
-    <div class="cv-card">
+<!-- ════════════════════════════════════════════════════════
+     PROFESSIONAL SUMMARY
+═════════════════════════════════════════════════════════ -->
+<div class="section-head">Professional Summary</div>
+<p class="summary">
+  Google Advanced Data Analytics certified analyst (+ Foundation) with a BCom and 8 deployed ML and analytics
+  projects publicly available at rpvermaak.github.io. Most analysts can run a model — I can also explain to a
+  business <em>why it matters</em>: five years founding and directing Vermaak Brewing Company meant real P&amp;L
+  accountability, cost modelling, and data-driven decisions under business pressure, all before those skills were
+  formalised with Python and SQL. Both Google certifications (160+ combined hours) were completed while teaching
+  full-time in South Korea — proving the discipline to commit and deliver simultaneously. Available for remote data
+  analyst roles or open to relocation.
+</p>
 
-      <!-- HEADER -->
-      <header class="cv-header">
-        <h1 class="cv-name">Ruben <span>Vermaak</span></h1>
-        <!-- EDIT: Update your title/role here -->
-        <p class="cv-title">Data Analyst &nbsp;&middot;&nbsp; Google Advanced Data Analytics Certified</p>
+<!-- ════════════════════════════════════════════════════════
+     SKILLS & TOOLKIT
+═════════════════════════════════════════════════════════ -->
+<div class="section-head">Skills &amp; Toolkit</div>
 
-        <!-- EDIT: Update your contact details here -->
-        <div class="cv-contacts">
-          <div class="cv-contact-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="2" y1="12" x2="22" y2="12"/>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-            </svg>
-            <a href="https://rpvermaak.github.io" target="_blank" rel="noopener">rpvermaak.github.io</a>
-          </div>
-          <div class="cv-contact-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-              <circle cx="12" cy="10" r="3"/>
-            </svg>
-            Seoul, South Korea
-          </div>
-          <div class="cv-contact-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-              <polyline points="22,6 12,13 2,6"/>
-            </svg>
-            <a href="mailto:rpvermaak123@gmail.com">rpvermaak123@gmail.com</a>
-          </div>
-          <div class="cv-contact-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-              <rect x="2" y="9" width="4" height="12"/>
-              <circle cx="4" cy="4" r="2"/>
-            </svg>
-            <a href="https://www.linkedin.com/in/ruben-vermaak-data" target="_blank" rel="noopener">linkedin.com/in/ruben-vermaak-29b225a1</a>
-          </div>
-          <div class="cv-contact-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-            </svg>
-            <a href="https://github.com/Rpvermaak" target="_blank" rel="noopener">github.com/Rpvermaak</a>
-          </div>
-        </div>
+<div class="skills-grid">
+  <div class="skills-col">
+    <div class="skills-col-header">Technical</div>
+    <div class="skill-line">Python · Pandas · NumPy · Scikit-learn</div>
+    <div class="skill-line">SQL · R · Excel / Google Sheets</div>
+    <div class="skill-line">Tableau · Matplotlib · Seaborn</div>
+    <div class="skill-line">Jupyter Notebooks · Git &amp; GitHub</div>
+    <div class="skill-line">Google Earth Engine · GeoPandas</div>
+    <div class="skill-line">Streamlit · Docker · Apify</div>
+    <div class="skill-line">Machine Learning · EDA · Statistical Analysis</div>
+    <div class="skill-line">Logistic Regression · Random Forest · NLP</div>
+  </div>
+  <div class="skills-col">
+    <div class="skills-col-header">Professional</div>
+    <div class="skill-line">Business Acumen · Entrepreneurship</div>
+    <div class="skill-line">P&amp;L Management · Financial Modelling</div>
+    <div class="skill-line">Stakeholder Reporting &amp; Presentation</div>
+    <div class="skill-line">Technical Communication</div>
+    <div class="skill-line">Cross-cultural Communication</div>
+    <div class="skill-line">Problem Decomposition</div>
+    <div class="skill-line">Self-directed Learning</div>
+    <div class="skill-line">Project Delivery Under Pressure</div>
+  </div>
+</div>
 
-        <!-- Quick-scan stats strip -->
-        <div class="cv-stats">
-          <div class="cv-stat">
-            <span class="cv-stat-number">8+</span>
-            <span class="cv-stat-label">Portfolio Projects</span>
-          </div>
-          <div class="cv-stat">
-            <span class="cv-stat-number">2</span>
-            <span class="cv-stat-label">Google Certifications</span>
-          </div>
-          <div class="cv-stat">
-            <span class="cv-stat-number">BCom</span>
-            <span class="cv-stat-label">Commerce Degree</span>
-          </div>
-          <div class="cv-stat">
-            <span class="cv-stat-number">5+</span>
-            <span class="cv-stat-label">Years Business Experience</span>
-          </div>
-        </div>
-      </header>
+<!-- ════════════════════════════════════════════════════════
+     SELECTED PROJECTS
+═════════════════════════════════════════════════════════ -->
+<div class="section-head">Selected Projects</div>
 
-      <!-- BODY -->
-      <div class="cv-body">
+<!-- VeldSentry -->
+<div class="no-break">
+  <div class="proj-name">VeldSentry — Crop Health Monitoring Pipeline</div>
+  <div class="proj-tech">Python · Google Earth Engine · GeoPandas · Streamlit · Sentinel-2 · Docker</div>
+  <ul class="cv-list">
+    <li>Built an end-to-end monitoring pipeline for a real farming client in South Africa's Soutpansberg region after a complete 2024 crop failure — pulling Sentinel-2 NDVI satellite data via Google Earth Engine and NASA POWER weather data to model soil moisture across 50 fields daily.</li>
+    <li>Analysed 3 years of NDVI time-series data, pinpointing the microclimate difference responsible for the crop failure and translating raw satellite signals into a concrete agronomic insight the client could act on.</li>
+    <li>Delivered a production-ready Streamlit dashboard with satellite maps, alert logs, automated PDF reports, and an SMS alert system via Africa's Talking API — a live, functional system for a real client.</li>
+  </ul>
+</div>
 
-        <!-- ---- PROFESSIONAL SUMMARY ---- -->
-        <section class="cv-section">
-          <h2 class="cv-section-heading">Professional Summary</h2>
-          <!-- EDIT: Update your summary paragraph here -->
-          <p class="cv-summary">
-            <strong>Google-certified data analyst</strong> (Advanced + Foundation) with a BCom and a public portfolio
-            of 8+ machine learning and analytics projects. Most analysts can run a model; I can also explain
-            to a business why it matters: five years of founding and running a company taught me to make
-            data-driven decisions under pressure before I formalised it into a career. Two years of
-            self-directed study in South Korea, completing two Google certifications while employed full-time,
-            prove I deliver on what I commit to.
-            <strong>Open to remote roles or relocation.</strong>
-          </p>
-        </section>
+<!-- Overberg -->
+<div class="no-break">
+  <div class="proj-name">Overberg Property Analyzer</div>
+  <div class="proj-tech">Python · Scikit-learn · Streamlit · Apify · Pandas · Docker</div>
+  <ul class="cv-list">
+    <li>Scraped 685 live property listings, cleaned and deduplicated across 22 scrape files, and extracted square-metre data from unstructured listing text via regex — producing a clean, analysis-ready dataset from raw web data.</li>
+    <li>Trained a Random Forest model with log-target transformation and suburb-level location encoding achieving <strong>R² = 0.45</strong> on real regional data — deployed as a Streamlit app serving instant predicted market valuations.</li>
+  </ul>
+</div>
 
-        <!-- ---- SKILLS ---- -->
-        <section class="cv-section">
-          <h2 class="cv-section-heading">Skills &amp; Toolkit</h2>
-          <div class="cv-skills-grid">
+<!-- Salifort -->
+<div class="no-break">
+  <div class="proj-name">Salifort Motors — HR Churn Prediction</div>
+  <div class="proj-tech">Python · Scikit-learn · Random Forest · Logistic Regression · Pandas</div>
+  <ul class="cv-list">
+    <li>Designed and compared Logistic Regression and Random Forest classifiers on employee data; Random Forest achieved <strong>98%+ accuracy</strong>, identifying satisfaction score, overtime hours, and promotion history as the top churn drivers.</li>
+    <li>Packaged model outputs into an executive HR retention brief with concrete policy recommendations — translating ML results directly into business action.</li>
+  </ul>
+</div>
 
-            <!-- EDIT: Add/remove skill badges here -->
-            <div>
-              <div class="cv-skill-group-label">Technical</div>
-              <div class="cv-badges">
-                <span class="cv-badge">Python</span>
-                <span class="cv-badge">Pandas</span>
-                <span class="cv-badge">NumPy</span>
-                <span class="cv-badge">Scikit-learn</span>
-                <span class="cv-badge">SQL</span>
-                <span class="cv-badge">R</span>
-                <span class="cv-badge">Tableau</span>
-                <span class="cv-badge">Matplotlib</span>
-                <span class="cv-badge">Seaborn</span>
-                <span class="cv-badge">Jupyter Notebooks</span>
-                <span class="cv-badge">Excel / Google Sheets</span>
-                <span class="cv-badge">Git &amp; GitHub</span>
-                <span class="cv-badge">EDA</span>
-                <span class="cv-badge">Machine Learning</span>
-                <span class="cv-badge">Logistic Regression</span>
-                <span class="cv-badge">Random Forest</span>
-                <span class="cv-badge">Statistical Analysis</span>
-                <span class="cv-badge">Google Earth Engine</span>
-                <span class="cv-badge">GeoPandas</span>
-                <span class="cv-badge">Streamlit</span>
-                <span class="cv-badge">Docker</span>
-                <span class="cv-badge">Apify</span>
-              </div>
-            </div>
+<!-- TikTok -->
+<div class="no-break">
+  <div class="proj-name">TikTok — Claims vs. Opinions Classifier</div>
+  <div class="proj-tech">Python · Scikit-learn · NLP · Random Forest · EDA</div>
+  <ul class="cv-list">
+    <li>Engineered engagement-based features from video caption data to automate content moderation at scale, achieving <strong>99% classification accuracy</strong> — identifying behavioural signals that reliably separate factual claims from opinions.</li>
+  </ul>
+</div>
 
-            <div>
-              <div class="cv-skill-group-label">Professional</div>
-              <div class="cv-badges">
-                <span class="cv-badge">Business Acumen</span>
-                <span class="cv-badge">Entrepreneurship</span>
-                <span class="cv-badge">Stakeholder Reporting</span>
-                <span class="cv-badge">Technical Communication</span>
-                <span class="cv-badge">Cross-cultural Communication</span>
-                <span class="cv-badge">P&amp;L Management</span>
-                <span class="cv-badge">Problem Decomposition</span>
-                <span class="cv-badge">Self-directed Learning</span>
-              </div>
-            </div>
+<!-- Cyclistic -->
+<div class="no-break">
+  <div class="proj-name">Cyclistic — Bike Share Conversion Analysis</div>
+  <div class="proj-tech">SQL · Tableau · Python · Data Storytelling</div>
+  <ul class="cv-list">
+    <li>Extracted and aggregated 12 months of trip data in SQL, built a Tableau dashboard exposing three distinct usage patterns between casual riders and members, and translated findings into a subscription conversion strategy in an executive-ready presentation.</li>
+  </ul>
+</div>
 
-          </div>
-        </section>
+<!-- DataKind -->
+<div class="no-break">
+  <div class="proj-name">DataKind — Smallholder Farmers Climate Analysis <em>(Volunteer)</em></div>
+  <div class="proj-tech">Python · Climate Data · EDA · Social Impact</div>
+  <ul class="cv-list">
+    <li>Volunteered on a DataKind data science challenge (Nov–Dec 2025), analysing historical weather and agricultural datasets to surface seasonal planting recommendations for smallholder farmers in developing regions.</li>
+  </ul>
+</div>
 
-        <!-- ---- CERTIFICATIONS ---- -->
-        <section class="cv-section">
-          <h2 class="cv-section-heading">Certifications</h2>
-          <div class="cv-certs">
+<!-- ════════════════════════════════════════════════════════
+     WORK EXPERIENCE
+═════════════════════════════════════════════════════════ -->
+<div class="section-head">Work Experience</div>
 
-            <!-- EDIT: Update or add certifications here -->
-            <div class="cv-cert">
-              <div class="cv-cert-left">
-                <div class="cv-cert-name">Google Advanced Data Analytics Professional Certificate</div>
-                <div class="cv-cert-issuer">Google / Coursera &nbsp;&middot;&nbsp; <a href="https://www.credly.com/badges/81be09d4-2897-4dcb-af6c-c63fd934d858/public_url" target="_blank" rel="noopener">Verify on Credly ↗</a></div>
-              </div>
-              <div class="cv-cert-date">Completed Sep 2025</div>
-            </div>
+<!-- Yeppeun -->
+<div class="no-break">
+  <div class="job-row">
+    <span class="job-title">English Teacher</span>
+    <span class="job-dates">Mar 2026 – Present</span>
+  </div>
+  <div class="job-sub">Yeppeun Leader Brain · Seoul, South Korea</div>
+  <ul class="cv-list">
+    <li>Continuing active analytics project development and GitHub portfolio maintenance alongside a full-time teaching role — demonstrating consistent output outside core working hours.</li>
+    <li>Delivering daily structured lessons to multinational student cohorts, sharpening the ability to present complex ideas clearly — directly transferable to communicating data insights to non-technical business stakeholders.</li>
+  </ul>
+</div>
 
-            <div class="cv-cert">
-              <div class="cv-cert-left">
-                <div class="cv-cert-name">Google Data Analytics Professional Certificate</div>
-                <div class="cv-cert-issuer">Google / Coursera &nbsp;&middot;&nbsp; <a href="https://www.credly.com/badges/91ce9d3a-1ae9-4314-bc46-d3ec036a5752/public_url" target="_blank" rel="noopener">Verify on Credly ↗</a></div>
-              </div>
-              <div class="cv-cert-date">Completed Dec 2024</div>
-            </div>
+<!-- Browns -->
+<div class="no-break">
+  <div class="job-row">
+    <span class="job-title">English Teacher</span>
+    <span class="job-dates">May 2024 – Mar 2026</span>
+  </div>
+  <div class="job-sub">Browns International School · Bundang-gu, South Korea</div>
+  <ul class="cv-list">
+    <li>Completed two Google Data Analytics certifications (160+ combined hours) while teaching full-time — proving consistent discipline to upskill and perform simultaneously under a demanding schedule.</li>
+    <li>Built 8+ end-to-end analytics projects and a DataKind volunteer engagement entirely outside work hours, establishing a fully public, verifiable portfolio on GitHub.</li>
+    <li>Adapted communication style and lesson structure daily across diverse multinational student groups — the same skill applied to presenting data findings to varied, non-technical business audiences.</li>
+  </ul>
+</div>
 
-            <div class="cv-cert">
-              <div class="cv-cert-left">
-                <div class="cv-cert-name">Teaching English as a Foreign Language (TEFL), 160 hours</div>
-                <div class="cv-cert-issuer">TTA (The TEFL Academy)</div>
-              </div>
-              <div class="cv-cert-date">Mar 2023 – Jun 2023</div>
-            </div>
+<!-- Vermaak Brewing -->
+<div class="no-break">
+  <div class="job-row">
+    <span class="job-title">Founder &amp; Director</span>
+    <span class="job-dates">Jul 2020 – Jan 2024</span>
+  </div>
+  <div class="job-sub">Vermaak Brewing Company · South Africa</div>
+  <ul class="cv-list">
+    <li>Founded a craft brewery from zero: designed production systems, secured supplier contracts, and scaled distribution while carrying full P&amp;L responsibility from day one.</li>
+    <li>Built cost models and sales dashboards from scratch to optimise batch scheduling and protect margins — the same quantitative reasoning now applied in Python and SQL.</li>
+    <li>Negotiated supplier and client contracts, managed staff, and maintained regulatory compliance across production, finance, and distribution simultaneously.</li>
+    <li>Sustained business viability through rolling cash-flow forecasts and disciplined P&amp;L management, embedding a financially-minded approach into every analysis produced.</li>
+  </ul>
+</div>
 
-          </div>
-        </section>
+<!-- Dog and Fig -->
+<div class="no-break">
+  <div class="job-row">
+    <span class="job-title">Head Brewer</span>
+    <span class="job-dates">Feb 2019 – Jul 2020</span>
+  </div>
+  <div class="job-sub">Dog and Fig Brewery · Parys, South Africa</div>
+  <ul class="cv-list">
+    <li>Managed the complete beer production lifecycle from strategic raw material sourcing through to distribution, consistently hitting targets while maintaining quality standards.</li>
+    <li>Oversaw brewing operations and team performance, developing operational management and cross-functional coordination capabilities.</li>
+  </ul>
+</div>
 
-        <!-- ---- SELECTED PROJECTS ---- -->
-        <section class="cv-section">
-          <h2 class="cv-section-heading">Selected Projects</h2>
-          <div class="cv-projects">
+<!-- ════════════════════════════════════════════════════════
+     EDUCATION
+═════════════════════════════════════════════════════════ -->
+<div class="section-head">Education</div>
+<div class="no-break">
+  <div class="edu-row">
+    <span class="edu-degree">Bachelor of Commerce (BCom)</span>
+    <span class="edu-dates">2015 – 2019</span>
+  </div>
+  <div class="edu-inst">Pearson Institute of Higher Education · Majors: Accounting, Finance, Economics &amp; Management</div>
+  <p class="edu-note">A commercially grounded degree that underpins every data analysis — fluency in P&amp;L, financial modelling, and management thinking that contextualises insights for business decision-makers.</p>
+</div>
 
-            <!-- EDIT: Add/remove/update project entries here -->
-            <div class="cv-project">
-              <div class="cv-project-top">
-                <div class="cv-project-title">VeldSentry — Crop Health Monitoring Pipeline <span class="cv-project-badge cv-project-badge--green">[REAL CLIENT]</span></div>
-                <div class="cv-project-link"><a href="https://github.com/Rpvermaak/sifra-potato-yield-analysis" target="_blank" rel="noopener">GitHub ↗</a></div>
-              </div>
-              <p class="cv-project-desc">Built a three-lock monitoring pipeline for a real farming client in South Africa's Soutpansberg region after a complete crop failure in 2024. Pulled Sentinel-2 satellite NDVI data via Google Earth Engine, NASA POWER weather data, and modelled soil moisture daily across 50 fields. Analysis of 3 years of NDVI data identified the microclimate difference driving the failure. Delivered a <strong>live Streamlit dashboard</strong> with satellite maps, alert logs, and PDF reports; an SMS alert system via Africa's Talking API; and a client-ready presentation.</p>
-              <div class="cv-project-tags">
-                <span class="cv-project-tag">Python</span>
-                <span class="cv-project-tag">Google Earth Engine</span>
-                <span class="cv-project-tag">GeoPandas</span>
-                <span class="cv-project-tag">Streamlit</span>
-                <span class="cv-project-tag">Sentinel-2</span>
-                <span class="cv-project-tag">Docker</span>
-              </div>
-            </div>
+<!-- ════════════════════════════════════════════════════════
+     CERTIFICATIONS
+═════════════════════════════════════════════════════════ -->
+<div class="section-head">Certifications</div>
+<div class="cert-line"><span class="cert-name">Google Advanced Data Analytics Professional Certificate</span> <span class="cert-sub">· Google / Coursera · Credly verified · Sep 2025</span></div>
+<div class="cert-line"><span class="cert-name">Google Data Analytics Professional Certificate</span> <span class="cert-sub">· Google / Coursera · Credly verified · Dec 2024</span></div>
+<div class="cert-line"><span class="cert-name">Teaching English as a Foreign Language (TEFL), 160 hrs</span> <span class="cert-sub">· TTA — The TEFL Academy · Jun 2023</span></div>
 
-            <div class="cv-project">
-              <div class="cv-project-top">
-                <div class="cv-project-title">Overberg Property Analyzer <span class="cv-project-badge cv-project-badge--green">[REAL PRODUCT]</span></div>
-                <div class="cv-project-link"><a href="https://github.com/Rpvermaak/overstrand-property-analyzer" target="_blank" rel="noopener">GitHub ↗</a></div>
-              </div>
-              <p class="cv-project-desc">Scraped 685 real listings from Property24 using Apify, cleaned and deduplicated across 22 scrape files, and extracted square metres from listing text via regex. Trained a Random Forest model with log-target transformation and suburb-level location encoding. <strong>R² = 0.45 on real regional data.</strong> Deployed as a Streamlit app giving users instant predicted market values and comparisons against similar listings.</p>
-              <div class="cv-project-tags">
-                <span class="cv-project-tag">Python</span>
-                <span class="cv-project-tag">Scikit-learn</span>
-                <span class="cv-project-tag">Streamlit</span>
-                <span class="cv-project-tag">Apify</span>
-                <span class="cv-project-tag">Pandas</span>
-                <span class="cv-project-tag">Docker</span>
-              </div>
-            </div>
-
-            <div class="cv-project">
-              <div class="cv-project-top">
-                <div class="cv-project-title">Salifort Motors — HR Churn Prediction</div>
-                <div class="cv-project-link"><a href="https://github.com/Rpvermaak/Google-Advanced-Data-Analytics-Projects" target="_blank" rel="noopener">GitHub ↗</a></div>
-              </div>
-              <p class="cv-project-desc">Designed and compared Logistic Regression and Random Forest classifiers to identify employees at risk of leaving. <strong>Random Forest achieved 98%+ accuracy</strong>, pinpointing satisfaction score, overtime hours, and promotion history as the strongest churn drivers. Packaged findings into a concrete HR retention brief.</p>
-              <div class="cv-project-tags">
-                <span class="cv-project-tag">Python</span>
-                <span class="cv-project-tag">Scikit-learn</span>
-                <span class="cv-project-tag">Random Forest</span>
-                <span class="cv-project-tag">Logistic Regression</span>
-                <span class="cv-project-tag">Pandas</span>
-              </div>
-            </div>
-
-            <div class="cv-project">
-              <div class="cv-project-top">
-                <div class="cv-project-title">TikTok — Claims vs. Opinions Classifier</div>
-                <div class="cv-project-link"><a href="https://github.com/Rpvermaak/Google-Advanced-Data-Analytics-Projects" target="_blank" rel="noopener">GitHub ↗</a></div>
-              </div>
-              <p class="cv-project-desc">Engineered engagement-based features from video caption data to automate content moderation at scale. <strong>Achieved 99% classification accuracy</strong> on the test set, identifying the behavioural signals that reliably separate factual claims from opinions.</p>
-              <div class="cv-project-tags">
-                <span class="cv-project-tag">Python</span>
-                <span class="cv-project-tag">Scikit-learn</span>
-                <span class="cv-project-tag">NLP</span>
-                <span class="cv-project-tag">Random Forest</span>
-                <span class="cv-project-tag">EDA</span>
-              </div>
-            </div>
-
-            <div class="cv-project">
-              <div class="cv-project-top">
-                <div class="cv-project-title">Cyclistic — Bike Share Conversion Analysis</div>
-                <div class="cv-project-link"><a href="https://github.com/Rpvermaak/bike-share-project" target="_blank" rel="noopener">GitHub ↗</a></div>
-              </div>
-              <p class="cv-project-desc">Extracted and aggregated 12 months of trip data in SQL, then built a Tableau dashboard that exposed <strong>three distinct usage patterns</strong> separating casual riders from members. Translated findings into a subscription conversion strategy presented in an executive-ready dashboard.</p>
-              <div class="cv-project-tags">
-                <span class="cv-project-tag">SQL</span>
-                <span class="cv-project-tag">Tableau</span>
-                <span class="cv-project-tag">Python</span>
-                <span class="cv-project-tag">Data Storytelling</span>
-              </div>
-            </div>
-
-            <div class="cv-project">
-              <div class="cv-project-top">
-                <div class="cv-project-title">DataKind — Smallholder Farmers Climate Analysis <span class="cv-project-badge cv-project-badge--purple">[VOLUNTEER]</span></div>
-                <div class="cv-project-link"><a href="https://github.com/Rpvermaak/datakit-smallholder-farmers-fall-2025" target="_blank" rel="noopener">GitHub ↗</a></div>
-              </div>
-              <p class="cv-project-desc">Volunteered on a DataKind data science challenge (Nov–Dec 2025), analysing historical weather and agricultural datasets to surface seasonal patterns informing planting recommendations for smallholder farmers in developing regions.</p>
-              <div class="cv-project-tags">
-                <span class="cv-project-tag">Python</span>
-                <span class="cv-project-tag">Climate Data</span>
-                <span class="cv-project-tag">EDA</span>
-                <span class="cv-project-tag">Social Impact</span>
-              </div>
-            </div>
-
-          </div>
-        </section>
-
-        <!-- ---- EXPERIENCE ---- -->
-        <section class="cv-section">
-          <h2 class="cv-section-heading">Experience</h2>
-          <div class="cv-entries">
-
-            <!-- EDIT: Update or add experience entries here -->
-            <div class="cv-entry">
-              <div class="cv-entry-top">
-                <div>
-                  <div class="cv-entry-title">English Teacher</div>
-                  <div class="cv-entry-org">Yeppeun Leader Brain &nbsp;&middot;&nbsp; South Korea</div>
-                </div>
-                <div class="cv-entry-meta">Mar 2026 – Present</div>
-              </div>
-              <div class="cv-entry-body">
-                <ul>
-                  <li>Earned two Google Data Analytics certifications (160+ hours of coursework) while teaching full-time, demonstrating the discipline to learn and perform simultaneously.</li>
-                  <li>Delivered 8+ end-to-end analytics projects and a DataKind volunteer engagement outside work hours, building a fully public, verifiable portfolio while employed.</li>
-                  <li>Adapted communication style daily for diverse student audiences, developing the ability to explain complex ideas clearly, directly applicable to presenting data insights to non-technical stakeholders.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="cv-entry">
-              <div class="cv-entry-top">
-                <div>
-                  <div class="cv-entry-title">English Teacher</div>
-                  <div class="cv-entry-org">Browns International School &nbsp;&middot;&nbsp; Bundang-gu, South Korea</div>
-                </div>
-                <div class="cv-entry-meta">May 2024 – Mar 2026</div>
-              </div>
-              <div class="cv-entry-body">
-                <ul>
-                  <li>Earned two Google Data Analytics certifications (160+ hours of coursework) while teaching full-time, demonstrating the discipline to learn and perform simultaneously.</li>
-                  <li>Delivered 8+ end-to-end analytics projects and a DataKind volunteer engagement outside work hours, building a fully public, verifiable portfolio while employed.</li>
-                  <li>Adapted communication style daily for diverse student audiences, developing the ability to explain complex ideas clearly, directly applicable to presenting data insights to non-technical stakeholders.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="cv-entry">
-              <div class="cv-entry-top">
-                <div>
-                  <div class="cv-entry-title">Founder &amp; Director</div>
-                  <div class="cv-entry-org">Vermaak Brewing Company &nbsp;&middot;&nbsp; South Africa</div>
-                </div>
-                <div class="cv-entry-meta">Jul 2020 – Jan 2024</div>
-              </div>
-              <div class="cv-entry-body">
-                <ul>
-                  <li>Launched a craft brewery from zero, designing production systems, securing supplier contracts, and scaling distribution while managing full P&amp;L from day one.</li>
-                  <li>Built cost models and sales dashboards from scratch to optimise batch scheduling and protect margin, applying the same quantitative reasoning now used in Python and SQL.</li>
-                  <li>Negotiated supplier and client relationships, managed staff, and maintained regulatory compliance across production, finance, and distribution.</li>
-                  <li>Sustained business viability through rolling cash-flow forecasts and disciplined P&amp;L management, embedding a financially-minded approach into every analysis produced.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="cv-entry">
-              <div class="cv-entry-top">
-                <div>
-                  <div class="cv-entry-title">Head Brewer</div>
-                  <div class="cv-entry-org">Dog and Fig Brewery &nbsp;&middot;&nbsp; Parys, South Africa</div>
-                </div>
-                <div class="cv-entry-meta">Feb 2019 – Jul 2020</div>
-              </div>
-              <div class="cv-entry-body">
-                <ul>
-                  <li>Managed the complete lifecycle of beer production — from strategic raw material sourcing through to distribution — meeting production targets while maintaining quality standards.</li>
-                  <li>Oversaw brewing operations and team performance, developing the operational management and cross-functional coordination skills carried into subsequent leadership roles.</li>
-                </ul>
-              </div>
-            </div>
-
-          </div>
-        </section>
-
-        <!-- ---- EDUCATION ---- -->
-        <section class="cv-section">
-          <h2 class="cv-section-heading">Education</h2>
-          <div class="cv-entries">
-
-            <!-- EDIT: Update or add education entries here -->
-            <div class="cv-entry">
-              <div class="cv-entry-top">
-                <div>
-                  <div class="cv-entry-title">Bachelor of Commerce (BCom)</div>
-                  <div class="cv-entry-org">Pearson Institute of Higher Education</div>
-                </div>
-                <div class="cv-entry-meta">2015 – 2019</div>
-              </div>
-              <div class="cv-entry-body">
-                Majored in accounting, finance, economics, and management, providing the commercial foundation that underpins every analysis and makes data relevant to business decisions.
-              </div>
-            </div>
-
-          </div>
-        </section>
-
-        <!-- ---- LANGUAGES ---- -->
-        <section class="cv-section">
-          <h2 class="cv-section-heading">Languages</h2>
-          <div class="cv-langs">
-            <!-- EDIT: Update language proficiency here -->
-            <div class="cv-lang"><strong>English:</strong> Native</div>
-            <div class="cv-lang"><strong>Afrikaans:</strong> Fluent</div>
-          </div>
-        </section>
-
-      </div><!-- /cv-body -->
-    </div><!-- /cv-card -->
-  </div><!-- /cv-wrapper -->
+<!-- ════════════════════════════════════════════════════════
+     LANGUAGES
+═════════════════════════════════════════════════════════ -->
+<div class="section-head">Languages</div>
+<div class="lang-line"><strong>English:</strong> Native &nbsp;·&nbsp; <strong>Afrikaans:</strong> Fluent</div>
 
 </body>
 </html>
