@@ -377,6 +377,17 @@
       color: var(--text-muted);
     }
 
+    /* ---- Project badge labels (Real Client / Volunteer etc.) ---- */
+    .cv-project-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      vertical-align: middle;
+      margin-left: 6px;
+      letter-spacing: 0.04em;
+    }
+    .cv-project-badge--green { color: #22c55e; }
+    .cv-project-badge--purple { color: #a78bfa; }
+
     /* ---- Divider between projects ---- */
     .cv-project + .cv-project {
       padding-top: 18px;
@@ -423,7 +434,7 @@
     @media print {
       @page {
         size: A4;
-        margin: 15mm 18mm;
+        margin: 14mm 18mm;
       }
 
       * {
@@ -431,15 +442,23 @@
         print-color-adjust: exact;
       }
 
+      /* === BASE === */
       body {
         background: #fff !important;
-        color: #111 !important;
+        color: #1a1a1a !important;
+        font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif !important;
         font-size: 9.5pt !important;
         line-height: 1.55 !important;
       }
 
-      .topbar { display: none !important; }
+      a { color: #1a1a1a !important; text-decoration: none !important; }
 
+      /* === HIDE WEB-ONLY ELEMENTS === */
+      .topbar          { display: none !important; }
+      .cv-stats        { display: none !important; }
+      .cv-project-badge { display: none !important; }
+
+      /* === LAYOUT === */
       .cv-wrapper {
         max-width: 100% !important;
         margin: 0 !important;
@@ -450,98 +469,200 @@
         background: #fff !important;
         border: none !important;
         border-radius: 0 !important;
+        box-shadow: none !important;
       }
 
+      /* === HEADER === */
       .cv-header {
         background: #fff !important;
-        border-bottom: 2px solid #00b4d8 !important;
-        padding: 0 0 16pt 0 !important;
+        border-bottom: 1.5pt solid #1a1a1a !important;
+        padding: 0 0 12pt 0 !important;
         margin-bottom: 0 !important;
       }
       .cv-header::before { display: none !important; }
 
       .cv-name {
-        font-size: 22pt !important;
-        color: #0a1628 !important;
+        font-size: 24pt !important;
+        font-weight: 700 !important;
+        color: #1a1a1a !important;
+        letter-spacing: -0.01em !important;
       }
-      .cv-name span { color: #00b4d8 !important; }
+      .cv-name span { color: #1a1a1a !important; }
 
       .cv-title {
+        font-size: 10.5pt !important;
         color: #444 !important;
-        font-size: 10pt !important;
-      }
-
-      .cv-contact-item { color: #444 !important; }
-      .cv-contact-item a { color: #444 !important; }
-      .cv-contact-item svg { stroke: #00b4d8 !important; }
-
-      .cv-body {
-        padding: 18pt 0 0 0 !important;
-        gap: 18pt !important;
-      }
-
-      .cv-section-heading {
-        color: #00b4d8 !important;
-        border-bottom-color: #dde3ed !important;
-        font-size: 7pt !important;
+        font-weight: 400 !important;
         margin-bottom: 10pt !important;
-        padding-bottom: 5pt !important;
       }
-      .cv-section-heading::before { background: #00b4d8 !important; }
 
-      .cv-summary { color: #333 !important; font-size: 9.5pt !important; }
-      .cv-summary strong { color: #111 !important; }
+      .cv-contacts {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 4pt 18pt !important;
+      }
+      .cv-contact-item {
+        font-size: 8.5pt !important;
+        color: #444 !important;
+      }
+      .cv-contact-item a { color: #444 !important; }
+      .cv-contact-item svg { stroke: #555 !important; }
 
-      .cv-entry-title { color: #0a1628 !important; font-size: 9.5pt !important; }
-      .cv-entry-org { color: #00b4d8 !important; font-size: 9pt !important; }
-      .cv-entry-meta { color: #666 !important; }
-      .cv-entry-body { color: #333 !important; font-size: 9pt !important; }
-      .cv-entry-body li::before { color: #00b4d8 !important; }
-      .cv-entry-body strong { color: #111 !important; }
+      /* === BODY === */
+      .cv-body {
+        padding: 14pt 0 0 0 !important;
+        gap: 16pt !important;
+      }
 
-      .cv-entries { gap: 14pt !important; }
+      /* === SECTION HEADINGS === */
+      .cv-section-heading {
+        font-size: 7pt !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.14em !important;
+        color: #1a1a1a !important;
+        border-bottom: 1pt solid #bbb !important;
+        margin-bottom: 10pt !important;
+        padding-bottom: 4pt !important;
+      }
+      .cv-section-heading::before { display: none !important; }
 
-      .cv-skills-grid { gap: 14pt !important; }
-      .cv-skill-group-label { color: #0a1628 !important; font-size: 9pt !important; }
-      .cv-badge {
-        background: #f0f4f8 !important;
-        border-color: #dde3ed !important;
+      /* === SUMMARY === */
+      .cv-summary {
+        font-size: 9pt !important;
         color: #333 !important;
-        font-size: 7.5pt !important;
+        line-height: 1.65 !important;
+      }
+      .cv-summary strong { color: #1a1a1a !important; }
+
+      /* === EXPERIENCE / EDUCATION ENTRIES === */
+      .cv-entries { gap: 12pt !important; }
+
+      .cv-entry-top { margin-bottom: 3pt !important; }
+
+      .cv-entry-title {
+        font-size: 9.5pt !important;
+        font-weight: 700 !important;
+        color: #1a1a1a !important;
+      }
+      .cv-entry-org {
+        font-size: 9pt !important;
+        font-weight: 500 !important;
+        color: #555 !important;
+      }
+      .cv-entry-meta {
+        font-size: 8.5pt !important;
+        color: #666 !important;
+      }
+      .cv-entry-body {
+        font-size: 9pt !important;
+        color: #333 !important;
+      }
+      .cv-entry-body li::before {
+        content: '–' !important;
+        color: #999 !important;
+        font-size: 9pt !important;
+        top: 0 !important;
+      }
+      .cv-entry-body strong { color: #1a1a1a !important; }
+
+      /* === SKILLS — plain comma-separated text === */
+      .cv-skills-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10pt !important;
+      }
+      .cv-skill-group-label {
+        font-size: 8.5pt !important;
+        font-weight: 700 !important;
+        color: #1a1a1a !important;
+        margin-bottom: 4pt !important;
+        display: block !important;
+      }
+      .cv-badges { display: block !important; }
+      .cv-badge {
+        display: inline !important;
+        background: none !important;
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        font-size: 9pt !important;
+        color: #444 !important;
+      }
+      .cv-badge::after {
+        content: ' · ';
+        color: #bbb !important;
+      }
+      .cv-badge:last-child::after { content: '' !important; }
+
+      /* === CERTIFICATIONS === */
+      .cv-certs { gap: 9pt !important; }
+      .cv-cert-name {
+        font-size: 9pt !important;
+        font-weight: 600 !important;
+        color: #1a1a1a !important;
+      }
+      .cv-cert-issuer {
+        font-size: 8.5pt !important;
+        color: #555 !important;
+      }
+      .cv-cert-issuer a { color: #555 !important; }
+      .cv-cert-date {
+        font-size: 8.5pt !important;
+        color: #666 !important;
       }
 
-      .cv-cert-name { color: #0a1628 !important; font-size: 9pt !important; }
-      .cv-cert-issuer { color: #00b4d8 !important; font-size: 8.5pt !important; }
-      .cv-cert-date { color: #666 !important; }
-      .cv-certs { gap: 10pt !important; }
-
+      /* === PROJECTS === */
       .cv-projects { gap: 10pt !important; }
       .cv-project + .cv-project {
         padding-top: 10pt !important;
-        border-top-color: #dde3ed !important;
+        border-top: 0.5pt solid #ddd !important;
       }
-      .cv-project-title { color: #0a1628 !important; font-size: 9pt !important; }
-      .cv-project-desc { color: #333 !important; font-size: 8.5pt !important; }
+      .cv-project-top { margin-bottom: 3pt !important; }
+      .cv-project-title {
+        font-size: 9.5pt !important;
+        font-weight: 700 !important;
+        color: #1a1a1a !important;
+      }
+      .cv-project-desc {
+        font-size: 8.5pt !important;
+        color: #333 !important;
+        line-height: 1.6 !important;
+      }
+      .cv-project-desc strong { color: #1a1a1a !important; }
+      .cv-project-link {
+        font-size: 8pt !important;
+        color: #666 !important;
+      }
+
+      /* Project tags — plain comma-separated */
+      .cv-project-tags {
+        display: block !important;
+        margin-top: 3pt !important;
+      }
       .cv-project-tag {
-        background: #e8f7fb !important;
-        color: #00789a !important;
-        font-size: 7pt !important;
+        display: inline !important;
+        background: none !important;
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        font-size: 8pt !important;
+        font-weight: 600 !important;
+        color: #666 !important;
       }
-      .cv-project-link { color: #888 !important; }
-
-      .cv-stats {
-        border-top-color: #dde3ed !important;
-        margin-top: 12pt !important;
-        padding-top: 12pt !important;
+      .cv-project-tag::after {
+        content: ' · ';
+        color: #bbb !important;
+        font-weight: 400 !important;
       }
-      .cv-stat-number { color: #00b4d8 !important; font-size: 11pt !important; }
-      .cv-stat-label { color: #666 !important; }
+      .cv-project-tag:last-child::after { content: '' !important; }
 
-      .cv-lang { color: #333 !important; }
-      .cv-lang strong { color: #111 !important; }
+      /* === LANGUAGES === */
+      .cv-langs { gap: 16pt !important; }
+      .cv-lang { font-size: 9pt !important; color: #333 !important; }
+      .cv-lang strong { color: #1a1a1a !important; }
 
-      /* avoid page breaks inside entries */
-      .cv-entry, .cv-cert, .cv-project { break-inside: avoid; }
+      /* === PAGE BREAK CONTROL === */
+      .cv-entry, .cv-cert, .cv-project { break-inside: avoid !important; }
+      .cv-section { break-inside: avoid !important; }
     }
 
     /* ---- Responsive ---- */
@@ -765,7 +886,7 @@
             <!-- EDIT: Add/remove/update project entries here -->
             <div class="cv-project">
               <div class="cv-project-top">
-                <div class="cv-project-title">VeldSentry — Crop Health Monitoring Pipeline <span style="font-size:0.68rem; font-weight:700; color:#22c55e;">[REAL CLIENT]</span></div>
+                <div class="cv-project-title">VeldSentry — Crop Health Monitoring Pipeline <span class="cv-project-badge cv-project-badge--green">[REAL CLIENT]</span></div>
                 <div class="cv-project-link"><a href="https://github.com/Rpvermaak/sifra-potato-yield-analysis" target="_blank" rel="noopener">GitHub ↗</a></div>
               </div>
               <p class="cv-project-desc">Built a three-lock monitoring pipeline for a real farming client in South Africa's Soutpansberg region after a complete crop failure in 2024. Pulled Sentinel-2 satellite NDVI data via Google Earth Engine, NASA POWER weather data, and modelled soil moisture daily across 50 fields. Analysis of 3 years of NDVI data identified the microclimate difference driving the failure. Delivered a <strong>live Streamlit dashboard</strong> with satellite maps, alert logs, and PDF reports; an SMS alert system via Africa's Talking API; and a client-ready presentation.</p>
@@ -781,7 +902,7 @@
 
             <div class="cv-project">
               <div class="cv-project-top">
-                <div class="cv-project-title">Overberg Property Analyzer <span style="font-size:0.68rem; font-weight:700; color:#22c55e;">[REAL PRODUCT]</span></div>
+                <div class="cv-project-title">Overberg Property Analyzer <span class="cv-project-badge cv-project-badge--green">[REAL PRODUCT]</span></div>
                 <div class="cv-project-link"><a href="https://github.com/Rpvermaak/overstrand-property-analyzer" target="_blank" rel="noopener">GitHub ↗</a></div>
               </div>
               <p class="cv-project-desc">Scraped 685 real listings from Property24 using Apify, cleaned and deduplicated across 22 scrape files, and extracted square metres from listing text via regex. Trained a Random Forest model with log-target transformation and suburb-level location encoding. <strong>R² = 0.45 on real regional data.</strong> Deployed as a Streamlit app giving users instant predicted market values and comparisons against similar listings.</p>
@@ -841,7 +962,7 @@
 
             <div class="cv-project">
               <div class="cv-project-top">
-                <div class="cv-project-title">DataKind — Smallholder Farmers Climate Analysis <span style="font-size:0.68rem; font-weight:700; color:#a78bfa;">[VOLUNTEER]</span></div>
+                <div class="cv-project-title">DataKind — Smallholder Farmers Climate Analysis <span class="cv-project-badge cv-project-badge--purple">[VOLUNTEER]</span></div>
                 <div class="cv-project-link"><a href="https://github.com/Rpvermaak/datakit-smallholder-farmers-fall-2025" target="_blank" rel="noopener">GitHub ↗</a></div>
               </div>
               <p class="cv-project-desc">Volunteered on a DataKind data science challenge (Nov–Dec 2025), analysing historical weather and agricultural datasets to surface seasonal patterns informing planting recommendations for smallholder farmers in developing regions.</p>
