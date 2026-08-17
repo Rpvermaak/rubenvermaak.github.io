@@ -142,6 +142,7 @@
     .price-card {
       background: var(--navy-card); border: 1px solid var(--navy-border); border-radius: var(--radius);
       padding: 36px 32px; position: relative; overflow: hidden; transition: border-color var(--transition), transform var(--transition);
+      display: flex; flex-direction: column;
     }
     .price-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
@@ -161,7 +162,7 @@
     .price-amount { font-family: var(--font-heading); font-size: 2.4rem; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
     .price-amount span { font-size: 1rem; font-weight: 500; color: var(--text-muted); }
     .price-note { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 26px; }
-    .price-features { display: flex; flex-direction: column; gap: 13px; margin-bottom: 28px; }
+    .price-features { display: flex; flex-direction: column; gap: 13px; margin-bottom: 28px; flex: 1; }
     .price-features li {
       display: flex; align-items: flex-start; gap: 10px; font-size: 0.92rem; color: var(--text-secondary);
     }
@@ -313,7 +314,7 @@
             </li>
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              Per-post sentiment breakdown &mdash; which posts land well, which don't
+              Per-post sentiment breakdown, showing which posts land well and which don't
             </li>
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -381,12 +382,12 @@
         <p>
           The client suspected dropping hashtags had hurt their engagement rate. Checking their own
           posting history directly showed engagement had already been declining for 8 months before
-          hashtags stopped &mdash; that theory didn't hold up.
+          hashtags stopped, so that theory didn't hold up.
         </p>
         <p>
           The next lead, posting volume, looked promising: it had roughly tripled right as engagement
           crashed. But digging into the timestamps found that 20% of the "extra" posts were near-duplicate
-          content posted minutes apart &mdash; consistent with Instagram's Trial Reels testing feature, not
+          content posted minutes apart, consistent with Instagram's Trial Reels testing feature, not
           genuinely new content. Removing those barely moved the numbers. Volume wasn't the answer either.
         </p>
         <p>
