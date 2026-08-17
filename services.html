@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Instagram Content &amp; Sentiment Audits | Ruben Vermaak</title>
+  <meta name="description" content="Instagram content and audience-sentiment audits for travel and lifestyle brands. Statistically verified findings, not guesswork, delivered as a code-free report." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --navy:          #0a1628;
+      --navy-mid:      #0f2040;
+      --navy-card:     #142238;
+      --navy-border:   #1e3355;
+      --accent:        #00b4d8;
+      --accent-dark:   #0089a7;
+      --text-primary:  #e2e8f0;
+      --text-secondary:#94a3b8;
+      --text-muted:    #64748b;
+      --font-heading:  'Space Grotesk', sans-serif;
+      --font-body:     'Inter', sans-serif;
+      --radius:        12px;
+      --transition:    0.28s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    ul { list-style: none; }
+
+    .container { width: 90%; max-width: 1100px; margin: 0 auto; }
+    .section { padding: 96px 0; }
+
+    .section-label {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      max-width: 640px;
+      margin-bottom: 60px;
+      font-size: 1rem;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 20px 0;
+      background: rgba(10, 22, 40, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--transition), padding var(--transition), background var(--transition);
+    }
+    nav.scrolled { padding: 13px 0; border-color: var(--navy-border); background: rgba(10, 22, 40, 0.96); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--text-primary); letter-spacing: 0.03em; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 38px; }
+    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--text-secondary); transition: color var(--transition); letter-spacing: 0.02em; }
+    .nav-links a:hover { color: var(--accent); text-decoration: none; }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text-primary); border-radius: 2px; transition: transform var(--transition), opacity var(--transition); }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 740px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none; position: absolute; top: 100%; left: 0; width: 100%;
+        flex-direction: column; gap: 0; background: var(--navy-mid); border-top: 1px solid var(--navy-border);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 16px 24px; border-bottom: 1px solid var(--navy-border); font-size: 1rem; width: 100%; }
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 8px;
+      font-family: var(--font-body); font-size: 0.9rem; font-weight: 600; letter-spacing: 0.02em;
+      cursor: pointer; transition: all var(--transition); text-decoration: none !important;
+    }
+    .btn-primary { background: var(--accent); color: var(--navy); border: 2px solid var(--accent); }
+    .btn-primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,180,216,0.28); }
+    .btn-outline { background: transparent; color: var(--text-primary); border: 2px solid var(--navy-border); }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    /* HEADER / PAGE HERO (compact, not full-viewport like the CV page) */
+    .page-hero { padding: 168px 0 80px; position: relative; overflow: hidden; }
+    .page-hero::before {
+      content: ''; position: absolute; top: -25%; right: -18%; width: 640px; height: 640px;
+      background: radial-gradient(circle, rgba(0,180,216,0.09) 0%, transparent 68%); pointer-events: none;
+    }
+    .page-hero-content { position: relative; z-index: 1; max-width: 760px; }
+    .page-hero h1 {
+      font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 700;
+      line-height: 1.12; margin-bottom: 20px; color: var(--text-primary);
+    }
+    .page-hero h1 .accent { color: var(--accent); }
+    .page-hero p.lede { font-size: clamp(1rem, 1.8vw, 1.1rem); color: var(--text-secondary); max-width: 620px; margin-bottom: 34px; }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 16px; }
+
+    /* PRICING */
+    .pricing { background: var(--navy-mid); }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; margin-bottom: 40px; }
+    .price-card {
+      background: var(--navy-card); border: 1px solid var(--navy-border); border-radius: var(--radius);
+      padding: 36px 32px; position: relative; overflow: hidden; transition: border-color var(--transition), transform var(--transition);
+    }
+    .price-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform var(--transition);
+    }
+    .price-card:hover { border-color: rgba(0,180,216,0.4); transform: translateY(-4px); }
+    .price-card:hover::before { transform: scaleX(1); }
+    .price-card.featured { border-color: rgba(0,180,216,0.45); }
+    .price-card.featured::before { transform: scaleX(1); }
+    .price-tag {
+      display: inline-block; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
+      background: rgba(0,180,216,0.12); border: 1px solid rgba(0,180,216,0.25);
+      padding: 5px 12px; border-radius: 20px; margin-bottom: 18px;
+    }
+    .price-name { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; color: var(--text-primary); }
+    .price-amount { font-family: var(--font-heading); font-size: 2.4rem; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+    .price-amount span { font-size: 1rem; font-weight: 500; color: var(--text-muted); }
+    .price-note { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 26px; }
+    .price-features { display: flex; flex-direction: column; gap: 13px; margin-bottom: 28px; }
+    .price-features li {
+      display: flex; align-items: flex-start; gap: 10px; font-size: 0.92rem; color: var(--text-secondary);
+    }
+    .price-features li svg { width: 17px; height: 17px; flex-shrink: 0; margin-top: 3px; color: var(--accent); }
+    .custom-note {
+      text-align: center; color: var(--text-secondary); font-size: 0.95rem;
+      border-top: 1px solid var(--navy-border); padding-top: 32px;
+    }
+
+    /* STEPS */
+    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+    .step-card { background: var(--navy-card); border: 1px solid var(--navy-border); border-radius: var(--radius); padding: 28px 24px; }
+    .step-num {
+      font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--accent);
+      letter-spacing: 0.08em; margin-bottom: 12px;
+    }
+    .step-card h3 { font-family: var(--font-heading); font-size: 1.05rem; margin-bottom: 8px; color: var(--text-primary); }
+    .step-card p { font-size: 0.9rem; color: var(--text-secondary); }
+
+    /* CASE STUDY */
+    .case-study { background: var(--navy-mid); }
+    .case-card {
+      background: var(--navy-card); border: 1px solid var(--navy-border); border-radius: var(--radius);
+      padding: 36px; margin-bottom: 24px;
+    }
+    .case-card h3 { font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 6px; color: var(--text-primary); }
+    .case-tag { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 18px; display: block; }
+    .case-card p { color: var(--text-secondary); margin-bottom: 14px; font-size: 0.95rem; }
+    .case-card p:last-child { margin-bottom: 0; }
+    .case-card strong { color: var(--text-primary); }
+    .case-stats { display: flex; flex-wrap: wrap; gap: 32px; margin: 20px 0; }
+    .case-stat-num { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; color: var(--accent); }
+    .case-stat-label { font-size: 0.8rem; color: var(--text-muted); }
+
+    /* TRUST */
+    .trust-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+    .trust-item { display: flex; gap: 14px; align-items: flex-start; }
+    .trust-item svg { width: 22px; height: 22px; flex-shrink: 0; color: var(--accent); margin-top: 2px; }
+    .trust-item h4 { font-family: var(--font-heading); font-size: 0.98rem; margin-bottom: 4px; color: var(--text-primary); }
+    .trust-item p { font-size: 0.88rem; color: var(--text-secondary); }
+
+    /* CONTACT */
+    .contact { text-align: center; }
+    .contact-inner { max-width: 640px; margin: 0 auto; }
+    .contact-inner .section-title, .contact-inner .section-subtitle, .contact-inner .section-label { text-align: center; margin-left: auto; margin-right: auto; }
+
+    footer { padding: 32px 0; border-top: 1px solid var(--navy-border); text-align: center; }
+    footer p { font-size: 0.8rem; color: var(--text-muted); }
+    footer a { color: var(--text-muted); }
+    footer a:hover { color: var(--accent); }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html#hero" class="nav-logo">RV<span>.</span></a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#case-study">Case Study</a></li>
+        <li><a href="#contact">Get In Touch</a></li>
+        <li><a href="index.html#hero">Full Portfolio &rarr;</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-content">
+        <p class="hero-eyebrow" style="display:inline-flex;align-items:center;gap:12px;font-size:0.82rem;font-weight:500;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:26px;">
+          Instagram Content &amp; Sentiment Audits
+        </p>
+        <h1>Find out what's <span class="accent">actually</span> driving your numbers.</h1>
+        <p class="lede">
+          I run statistically rigorous audits on Instagram accounts, not surface-level reports.
+          Every claim gets checked against a second hypothesis before it goes in the report,
+          so you get a real answer instead of a guess dressed up as one.
+        </p>
+        <div class="hero-ctas">
+          <a href="#pricing" class="btn btn-primary">See pricing</a>
+          <a href="#case-study" class="btn btn-outline">Read a case study</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing section" id="pricing">
+    <div class="container">
+      <p class="section-label reveal">Pricing</p>
+      <h2 class="section-title reveal">Two ways to start</h2>
+      <p class="section-subtitle reveal">
+        One-time, no retainer required. Both include a code-free report your team can actually read.
+      </p>
+
+      <div class="pricing-grid">
+
+        <div class="price-card reveal">
+          <span class="price-tag">Content Audit</span>
+          <div class="price-name">Content Analysis</div>
+          <div class="price-amount">$250</div>
+          <p class="price-note">One-time · delivered in 3-5 business days</p>
+          <ul class="price-features">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Format, posting-time, and hashtag performance analysis
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Engagement-rate benchmarking against your follower tier
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Content-theme clustering: what topics actually perform
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Findings checked with statistical significance testing, not eyeballed
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Code-free PDF report + executive summary
+            </li>
+          </ul>
+          <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center;">Start here</a>
+        </div>
+
+        <div class="price-card featured reveal">
+          <span class="price-tag">Most Complete</span>
+          <div class="price-name">Content + Sentiment Audit</div>
+          <div class="price-amount">$350</div>
+          <p class="price-note">One-time · delivered in 3-5 business days</p>
+          <ul class="price-features">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Everything in the Content Analysis tier
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Audience sentiment analysis on your comments
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Per-post sentiment breakdown &mdash; which posts land well, which don't
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Flags real audience pushback vs. false-alarm negative comments
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Full analysis notebook available on request
+            </li>
+          </ul>
+          <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center;">Start here</a>
+        </div>
+
+      </div>
+
+      <p class="custom-note reveal">
+        Need ongoing tracking, a different platform, or something custom?
+        <a href="#contact">Get in touch</a> and let's talk about what makes sense.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <p class="section-label reveal">Process</p>
+      <h2 class="section-title reveal">How it works</h2>
+      <p class="section-subtitle reveal">Simple, low-friction, and you never share your password.</p>
+
+      <div class="steps-grid">
+        <div class="step-card reveal">
+          <div class="step-num">Step 1</div>
+          <h3>Sign the agreement</h3>
+          <p>A short audit &amp; data access agreement covering scope and how your data is handled.</p>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-num">Step 2</div>
+          <h3>20-30 min call</h3>
+          <p>You log into your own Instagram account on a screen-share and approve read-only access.</p>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-num">Step 3</div>
+          <h3>I run the analysis</h3>
+          <p>Profile, post, engagement, and (if selected) comment data, checked against multiple hypotheses.</p>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-num">Step 4</div>
+          <h3>Report delivered</h3>
+          <p>A code-free PDF plus a view-only link, within 3-5 business days.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-study section" id="case-study">
+    <div class="container">
+      <p class="section-label reveal">Proof Of Work</p>
+      <h2 class="section-title reveal">Real audits, real findings</h2>
+      <p class="section-subtitle reveal">
+        Two examples of the kind of analysis you actually get, not a template with your logo swapped in.
+      </p>
+
+      <div class="case-card reveal">
+        <span class="case-tag">Client Audit &middot; Travel &amp; Lifestyle Account &middot; Anonymized</span>
+        <h3>Finding the real cause of an engagement drop, after two wrong theories</h3>
+        <p>
+          The client suspected dropping hashtags had hurt their engagement rate. Checking their own
+          posting history directly showed engagement had already been declining for 8 months before
+          hashtags stopped &mdash; that theory didn't hold up.
+        </p>
+        <p>
+          The next lead, posting volume, looked promising: it had roughly tripled right as engagement
+          crashed. But digging into the timestamps found that 20% of the "extra" posts were near-duplicate
+          content posted minutes apart &mdash; consistent with Instagram's Trial Reels testing feature, not
+          genuinely new content. Removing those barely moved the numbers. Volume wasn't the answer either.
+        </p>
+        <p>
+          <strong>The actual cause:</strong> the account had quietly shifted its format mix from roughly a third
+          Carousel posts down to under 10%, and Carousel posts convert reach into engagement several times
+          better than Video. Confirmed with proper statistical testing (not just eyeballing a chart), across
+          hundreds of posts.
+        </p>
+        <div class="case-stats">
+          <div><div class="case-stat-num">2</div><div class="case-stat-label">wrong theories ruled out first</div></div>
+          <div><div class="case-stat-num">p&lt;0.0001</div><div class="case-stat-label">statistical confidence on the real driver</div></div>
+          <div><div class="case-stat-num">1</div><div class="case-stat-label">clear, actionable fix</div></div>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <span class="case-tag">My Own Account &middot; @karmic.steps</span>
+        <h3>I run this same analysis on my own account</h3>
+        <p>
+          Karmic Steps is a travel Instagram account I run myself, and I use it as a live testbed for this
+          same audit process. It's how I caught that identity-specific hashtags (like a destination or
+          community tag) meaningfully outperform generic travel tags on my own posts, and it's part of why
+          I trust the process enough to sell it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="trust">
+    <div class="container">
+      <p class="section-label reveal">Data &amp; Privacy</p>
+      <h2 class="section-title reveal">Your data stays yours</h2>
+      <p class="section-subtitle reveal">No shortcuts on this, ever.</p>
+
+      <div class="trust-list">
+        <div class="trust-item reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <div><h4>Read-only, always</h4><p>I can view insights, posts, and comments. I can never post, edit, or message from your account.</p></div>
+        </div>
+        <div class="trust-item reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
+          <div><h4>You never share a password</h4><p>You log in yourself on a screen-share call and approve access directly through Instagram.</p></div>
+        </div>
+        <div class="trust-item reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6h14z"/></svg>
+          <div><h4>Deleted when done</h4><p>Access tokens are deleted once your report is delivered, and your data is deleted on request.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <p class="section-label reveal">Get Started</p>
+        <h2 class="section-title reveal">Let's audit your account</h2>
+        <p class="section-subtitle reveal">
+          Email me your Instagram handle and which tier you're interested in, and I'll send over the
+          agreement and a couple of call times.
+        </p>
+        <a href="mailto:rpvermaak123@gmail.com?subject=Instagram%20audit%20inquiry" class="btn btn-primary reveal">
+          rpvermaak123@gmail.com
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>
+        <a href="index.html#hero">Ruben Vermaak</a>
+        &copy; <span id="year"></span>
+        &nbsp;&middot;&nbsp;
+        <a href="index.html#hero">Back to full portfolio</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    const navToggle  = document.getElementById('navToggle');
+    const navLinksEl = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinksEl.classList.toggle('open');
+      navToggle.classList.toggle('open', isOpen);
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+    navLinksEl.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinksEl.classList.remove('open');
+        navToggle.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const siblings = Array.from(entry.target.parentElement.querySelectorAll('.reveal:not(.visible)'));
+        const delay = siblings.indexOf(entry.target) * 80;
+        setTimeout(() => entry.target.classList.add('visible'), Math.max(delay, 0));
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
+  </script>
+
+</body>
+</html>
