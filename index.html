@@ -903,7 +903,7 @@
         <!-- EDIT: Update these numbers if needed -->
         <div class="about-stats">
           <div class="stat-card reveal">
-            <div class="stat-number">8+</div>
+            <div class="stat-number">9+</div>
             <div class="stat-label">Projects Completed</div>
           </div>
           <div class="stat-card reveal">
@@ -1090,6 +1090,58 @@
             <span class="project-tag">Docker</span>
           </div>
           <a href="https://github.com/Rpvermaak/overstrand-property-analyzer"
+             target="_blank" rel="noopener" class="project-cta">
+            View on GitHub
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- PROJECT: Fuel Viability Predictor -->
+        <div class="project-card reveal">
+          <div class="project-header">
+            <div class="logo-wrap accent" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="6" y="8" width="12" height="19" rx="1.5" stroke="#00b4d8" stroke-width="2"/>
+                <line x1="6" y1="14" x2="18" y2="14" stroke="#00b4d8" stroke-width="2"/>
+                <path d="M18 12 L23 12 Q25 12 25 14 L25 22 Q25 24 23 24" stroke="#00b4d8" stroke-width="2" stroke-linecap="round" fill="none"/>
+                <circle cx="23" cy="24.5" r="1.4" fill="#00b4d8"/>
+              </svg>
+            </div>
+            <a href="https://github.com/Rpvermaak/fuel-viability-predictor"
+               target="_blank" rel="noopener" class="project-ext-link" aria-label="View on GitHub">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </a>
+          </div>
+          <h3 class="project-title">Fuel Viability Predictor — Petrol Station Site Scoring</h3>
+          <p class="project-description">
+            <strong>Problem:</strong> A prospecting client evaluating petrol station acquisitions
+            in Gauteng needed a way to screen candidate sites for viability — traditional
+            assessment relies on expensive traffic surveys or slow commissioned market studies.<br><br>
+            <strong>Approach:</strong> Built a Python CLI and Streamlit app that scores any address
+            or coordinate pair 0&ndash;100 using a six-factor weighted model (road type, competition,
+            demographics, commercial density), sourced entirely from OpenStreetMap and Stats SA
+            Census 2022 &mdash; no paid APIs. Weight profiles were calibrated against published
+            academic research on Gauteng fuel throughput.<br><br>
+            <strong>Result:</strong> Validated against five real Gauteng locations with
+            geographically sensible rankings. The client engagement didn't move forward, so the
+            tool &mdash; CLI, web app, and full methodology writeup &mdash; is now open source.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">GeoPandas</span>
+            <span class="project-tag">OpenStreetMap</span>
+            <span class="project-tag">Streamlit</span>
+            <span class="project-tag">Stats SA Census</span>
+            <span class="project-tag">Weighted Scoring</span>
+          </div>
+          <a href="https://github.com/Rpvermaak/fuel-viability-predictor"
              target="_blank" rel="noopener" class="project-cta">
             View on GitHub
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
