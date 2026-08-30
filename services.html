@@ -197,6 +197,25 @@
     .case-stat-num { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; color: var(--accent); }
     .case-stat-label { font-size: 0.8rem; color: var(--text-muted); }
 
+    /* TESTIMONIAL */
+    .testimonial-card {
+      background: var(--navy-card); border: 1px solid var(--navy-border); border-radius: var(--radius);
+      padding: 40px; position: relative; max-width: 720px;
+    }
+    .testimonial-quote-mark {
+      font-family: var(--font-heading); font-size: 3rem; line-height: 1; color: var(--accent);
+      display: block; margin-bottom: 8px;
+    }
+    .testimonial-card p { color: var(--text-secondary); margin-bottom: 14px; font-size: 0.98rem; }
+    .testimonial-card p:last-of-type { margin-bottom: 24px; }
+    .testimonial-attribution {
+      display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px;
+      padding-top: 18px; border-top: 1px solid var(--navy-border);
+    }
+    .testimonial-name { font-family: var(--font-heading); font-weight: 700; color: var(--text-primary); font-size: 0.98rem; }
+    .testimonial-attribution a { font-size: 0.9rem; }
+    .testimonial-role { font-size: 0.85rem; color: var(--text-muted); }
+
     /* TRUST */
     .trust-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
     .trust-item { display: flex; gap: 14px; align-items: flex-start; }
@@ -416,6 +435,35 @@
           community tag) meaningfully outperform generic travel tags on my own posts, and it's part of why
           I trust the process enough to sell it.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonial section" id="testimonial">
+    <div class="container">
+      <p class="section-label reveal">Client Feedback</p>
+      <h2 class="section-title reveal">What clients say</h2>
+
+      <div class="testimonial-card reveal">
+        <span class="testimonial-quote-mark">&ldquo;</span>
+        <p>
+          We were genuinely impressed with the Instagram analysis Ruben did for us. Data analysis is
+          definitely not our favourite part of running social media, so having Ruben turn all those numbers
+          into clear, useful insights was incredibly valuable. He took the time to understand our account
+          personally, walked us through the results, and helped us understand what is actually working for
+          us and what isn't.
+        </p>
+        <p>
+          It didn't just feel like receiving a report full of numbers. We came away with a much clearer
+          understanding of our content and where we can improve. We'd definitely recommend Ruben to anyone
+          who wants to better understand their Instagram performance without spending hours digging through
+          the data themselves.
+        </p>
+        <div class="testimonial-attribution">
+          <span class="testimonial-name">Two Wild Nomads</span>
+          <a href="https://www.instagram.com/twowildnomads" target="_blank" rel="noopener">@twowildnomads</a>
+          <span class="testimonial-role">&middot; Content Audit client</span>
+        </div>
       </div>
     </div>
   </section>
