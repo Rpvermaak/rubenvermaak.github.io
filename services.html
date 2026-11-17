@@ -174,6 +174,10 @@
       display: flex; align-items: flex-start; gap: 10px; font-size: 0.92rem; color: var(--text-secondary);
     }
     .price-features li svg { width: 17px; height: 17px; flex-shrink: 0; margin-top: 3px; color: var(--accent); }
+    .addon-card { background: var(--navy-card); border: 1px dashed var(--navy-border); border-radius: var(--radius); padding: 24px; margin: 0 0 32px; }
+    .addon-card p { color: var(--text-secondary); margin-top: 8px; }
+    .addon-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-top: 10px; }
+    .addon-price { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.4rem; }
     .custom-note {
       text-align: center; color: var(--text-secondary); font-size: 0.95rem;
       border-top: 1px solid var(--navy-border); padding-top: 32px;
@@ -289,7 +293,7 @@
       <p class="section-label reveal">Pricing</p>
       <h2 class="section-title reveal">Two ways to start</h2>
       <p class="section-subtitle reveal">
-        One-time, no retainer required. Both include a code-free report your team can actually read.
+        One-time, no retainer. These are intro prices while I build up client reviews. Both include a plain-English report you can actually use.
       </p>
 
       <div class="pricing-grid">
@@ -297,8 +301,8 @@
         <div class="price-card reveal">
           <span class="price-tag">Content Audit</span>
           <div class="price-name">Content Analysis</div>
-          <div class="price-amount">$250</div>
-          <p class="price-note">One-time · delivered in 3-5 business days</p>
+          <div class="price-amount">$97</div>
+          <p class="price-note">One-time · delivered within 3 business days of our call</p>
           <ul class="price-features">
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -320,10 +324,6 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
               Code-free PDF report + executive summary
             </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              Branded media kit, ready to send to sponsors
-            </li>
           </ul>
           <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center;">Start here</a>
         </div>
@@ -331,8 +331,8 @@
         <div class="price-card featured reveal">
           <span class="price-tag">Most Complete</span>
           <div class="price-name">Content + Sentiment Audit</div>
-          <div class="price-amount">$350</div>
-          <p class="price-note">One-time · delivered in 3-5 business days</p>
+          <div class="price-amount">$147</div>
+          <p class="price-note">One-time · delivered within 3 business days of our call</p>
           <ul class="price-features">
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -358,6 +358,12 @@
           <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center;">Start here</a>
         </div>
 
+      </div>
+
+      <div class="addon-card reveal">
+        <span class="price-tag">Add-on</span>
+        <div class="addon-head"><span class="price-name">Brand Deal Pack</span><span class="addon-price">+$50</span></div>
+        <p>Your audit numbers laid out the way brands ask for them, plus an editable one-page template to attach to pitch emails. Walk into brand deals knowing your numbers.</p>
       </div>
 
       <p class="custom-note reveal">
@@ -392,7 +398,7 @@
         <div class="step-card reveal">
           <div class="step-num">Step 4</div>
           <h3>Report delivered</h3>
-          <p>A code-free PDF plus a view-only link, within 3-5 business days.</p>
+          <p>A code-free PDF plus a view-only link, within 3 business days of our call.</p>
         </div>
       </div>
     </div>
