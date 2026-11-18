@@ -358,6 +358,17 @@
       margin-bottom: 22px;
     }
 
+    .hero-headline { font-size: clamp(2.4rem, 6vw, 4.2rem); max-width: 820px; }
+    .offer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+    .offer-card { background: var(--navy-card); border: 1px solid var(--navy-border); border-radius: var(--radius); padding: 32px 28px; display: flex; flex-direction: column; gap: 14px; }
+    .offer-card h3 { font-family: var(--font-heading); font-size: 1.45rem; color: var(--text-primary); line-height: 1.25; }
+    .offer-card p, .offer-list li { color: var(--text-secondary); }
+    .offer-for { font-size: 0.78rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; }
+    .offer-list { display: flex; flex-direction: column; gap: 10px; padding-left: 0; list-style: none; }
+    .offer-list strong { color: var(--text-primary); }
+    .offer-price { font-family: var(--font-heading); font-weight: 700; color: var(--text-primary) !important; margin-top: auto; }
+    .offer-card .btn { align-self: flex-start; }
+
     .hero-bio {
       font-size: clamp(1rem, 1.8vw, 1.08rem);
       color: var(--text-secondary);
@@ -781,12 +792,11 @@
       </button>
 
       <ul class="nav-links" id="navLinks">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Work</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#certifications">Certifications</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="services.html">Instagram Audits &rarr;</a></li>
+        <li><a href="services.html">Instagram Audit &rarr;</a></li>
       </ul>
     </div>
   </nav>
@@ -799,39 +809,20 @@
     <div class="container">
       <div class="hero-content">
 
-        <p class="hero-eyebrow">Seongnam-si, South Korea</p>
+        <p class="hero-eyebrow">Ruben Vermaak &nbsp;&middot;&nbsp; LLM pipelines and applied analytics</p>
 
-        <h1 class="hero-name">
-          Ruben<br><span class="accent">Vermaak</span>
+        <h1 class="hero-name hero-headline">
+          Turn your numbers into a <span class="accent">to-do list</span>.
         </h1>
 
-        <p class="hero-role">Data &amp; AI Tooling for Small Businesses &nbsp;&middot;&nbsp; Python &nbsp;&middot;&nbsp; LLM Pipelines &nbsp;&middot;&nbsp; Applied Analytics</p>
-
-        <!-- EDIT: Adjust this bio to match your voice -->
         <p class="hero-bio">
-          I build data systems and custom tools for small businesses and independent clients.
-          The work runs in production, not just in notebooks. My recent projects span satellite
-          crop monitoring for South African farmers and AI research agents built on the Claude API.
-          My focus is on solving real business problems through analysis and automation.
+          I build data pipelines and AI tools that show creators and small businesses what is
+          working, what isn't, and what to do next.
         </p>
 
         <div class="hero-ctas">
-          <a href="#projects" class="btn btn-primary">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="5" y1="12" x2="19" y2="12"/>
-              <polyline points="12 5 19 12 12 19"/>
-            </svg>
-            View My Work
-          </a>
-          <!-- CV PDF — replace cv.pdf in the repo to update the download -->
-          <a href="cv.pdf" download="Ruben_Vermaak_CV.pdf" class="btn btn-outline">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            Download CV
-          </a>
+          <a href="services.html" class="btn btn-primary">Get an Instagram audit</a>
+          <a href="#business" class="btn btn-outline">Help for small businesses</a>
         </div>
 
       </div>
@@ -845,6 +836,42 @@
     </div>
   </section>
 
+
+  <!-- ============================================================
+       SERVICES
+  ============================================================ -->
+  <section class="section" id="services">
+    <div class="container">
+      <p class="section-label reveal">Services</p>
+      <h2 class="section-title reveal">What I can do for you</h2>
+      <div class="offer-grid">
+
+        <div class="offer-card reveal">
+          <span class="offer-for">For creators</span>
+          <h3>Make sense of your Instagram numbers</h3>
+          <p>
+            Find out what is really driving your engagement, what to post more of, and the honest
+            numbers brands look for before they pay you. Plain English, no code.
+          </p>
+          <p class="offer-price">Audits from $97</p>
+          <a href="services.html" class="btn btn-primary">See the creator audit</a>
+        </div>
+
+        <div class="offer-card reveal" id="business">
+          <span class="offer-for">For small businesses</span>
+          <h3>Stop rebuilding the same report every week</h3>
+          <ul class="offer-list">
+            <li><strong>Clean up and fix:</strong> messy spreadsheets and broken reports, sorted once.</li>
+            <li><strong>Dashboards:</strong> reports that update themselves, in Looker Studio or Tableau.</li>
+            <li><strong>Automation:</strong> LLM pipelines and agents that take repetitive work off your plate.</li>
+          </ul>
+          <p class="offer-price">Fixed quote after a short call</p>
+          <a href="#contact" class="btn btn-outline">Tell me what's slowing you down</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <!-- ============================================================
        ABOUT
