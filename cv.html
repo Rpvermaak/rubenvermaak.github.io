@@ -32,6 +32,11 @@
     margin-bottom: 4pt;
   }
 
+  .cv-bar { display: flex; justify-content: space-between; font-size: 9.5pt; margin-bottom: 14pt; }
+  .cv-bar a, .proj-name a { color: #1B4F72; text-decoration: none; }
+  .cv-bar a:hover, .proj-name a:hover { text-decoration: underline; }
+  @media print { .cv-bar, .screen-only { display: none; } }
+
   .tagline {
     font-size: 13pt;
     color: #2471A3;
@@ -173,16 +178,20 @@
 </style>
 </head>
 <body>
+<nav class="cv-bar">
+  <a href="index.html">&larr; Back to site</a>
+  <a href="cv.pdf" download="Ruben_Vermaak_CV.pdf">Download PDF</a>
+</nav>
 
 <!-- ════════════════════════════════════════════════════════
      HEADER
 ═════════════════════════════════════════════════════════ -->
 <div class="header">
   <h1 class="name">Ruben Vermaak</h1>
-  <div class="tagline">Data Analyst &nbsp;·&nbsp; Google Advanced Data Analytics Certified</div>
+  <div class="tagline">LLM Pipelines &amp; Applied Analytics &nbsp;·&nbsp; Google Advanced Data Analytics Certified</div>
   <div class="contact">
-    rpvermaak.github.io &nbsp;·&nbsp;
-    Seoul, South Korea &nbsp;·&nbsp;
+    rpvermaak.github.io/rubenvermaak.github.io &nbsp;·&nbsp;
+    Seongnam-si, South Korea &nbsp;·&nbsp;
     rpvermaak123@gmail.com &nbsp;·&nbsp;
     linkedin.com/in/ruben-vermaak-data &nbsp;·&nbsp;
     github.com/Rpvermaak
@@ -196,13 +205,12 @@
 ═════════════════════════════════════════════════════════ -->
 <div class="section-head">Professional Summary</div>
 <p class="summary">
-  Google Advanced Data Analytics certified analyst (+ Foundation) with a BCom and 8 deployed ML and analytics
-  projects publicly available at rpvermaak.github.io. Most analysts can run a model — I can also explain to a
-  business <em>why it matters</em>: five years founding and directing Vermaak Brewing Company meant real P&amp;L
-  accountability, cost modelling, and data-driven decisions under business pressure, all before those skills were
-  formalised with Python and SQL. Both Google certifications (160+ combined hours) were completed while teaching
-  full-time in South Korea — proving the discipline to commit and deliver simultaneously. Available for remote data
-  analyst roles or open to relocation.
+  I build LLM pipelines and applied analytics for creators and small businesses. Google Advanced Data Analytics
+  certified (plus the foundation certificate), with a BCom and a public portfolio on GitHub. Many people can run a
+  model. I can also explain to a business <em>why it matters</em>: three and a half years founding and running
+  Vermaak Brewing Company meant real P&amp;L accountability, cost modelling, and decisions made under business
+  pressure. Both Google certifications (160+ combined hours) were completed while teaching full-time in South
+  Korea. Open to freelance projects and remote data roles.
 </p>
 
 <!-- ════════════════════════════════════════════════════════
@@ -238,51 +246,68 @@
 <!-- ════════════════════════════════════════════════════════
      SELECTED PROJECTS
 ═════════════════════════════════════════════════════════ -->
-<div class="section-head">Selected Projects</div>
+<div class="section-head" id="archive">Selected Projects</div>
+<div class="no-break">
+  <div class="proj-name"><a href="https://github.com/Rpvermaak/fuel-viability-predictor">Forecourt Scout: Petrol Station Site Scoring</a></div>
+  <div class="proj-tech">Python · GeoPandas · OpenStreetMap · Streamlit · Stats SA Census</div>
+  <ul class="cv-list">
+    <li>Built a CLI and Streamlit app that scores any address 0 to 100 on a six-factor weighted model (road type, competition, demographics, commercial density), using only OpenStreetMap and Stats SA Census 2022 data.</li>
+    <li>Built for a prospective client's question; the engagement didn't go ahead, so the tool and methodology are open source.</li>
+  </ul>
+</div>
+
+<div class="no-break">
+  <div class="proj-name">KarmicSteps Research Agent</div>
+  <div class="proj-tech">Python · Claude API · Instagram Graph API · YouTube Data API · Apify</div>
+  <ul class="cv-list">
+    <li>Automated weekly cross-platform reports for KarmicSteps, my travel channel, pulling Instagram, YouTube and Apify data and using the Claude API to write the report.</li>
+  </ul>
+</div>
+
 
 <!-- VeldSentry -->
 <div class="no-break">
-  <div class="proj-name">VeldSentry — Crop Health Monitoring Pipeline</div>
+  <div class="proj-name"><a href="https://github.com/Rpvermaak/sifra-potato-yield-analysis">VeldSentry: Crop Health Monitoring Pipeline</a></div>
   <div class="proj-tech">Python · Google Earth Engine · GeoPandas · Streamlit · Sentinel-2 · Docker</div>
   <ul class="cv-list">
-    <li>Built an end-to-end monitoring pipeline for a real farming client in South Africa's Soutpansberg region after a complete 2024 crop failure — pulling Sentinel-2 NDVI satellite data via Google Earth Engine and NASA POWER weather data to model soil moisture across 50 fields daily.</li>
-    <li>Analysed 3 years of NDVI time-series data, pinpointing the microclimate difference responsible for the crop failure and translating raw satellite signals into a concrete agronomic insight the client could act on.</li>
-    <li>Delivered a production-ready Streamlit dashboard with satellite maps, alert logs, automated PDF reports, and an SMS alert system via Africa's Talking API — a live, functional system for a real client.</li>
+    <li>Built an end-to-end monitoring pipeline on data from a real potato farm in South Africa's Soutpansberg region, after a complete 2024 crop failure, pulling Sentinel-2 NDVI satellite data via Google Earth Engine and NASA POWER weather data to model soil moisture across 50 fields daily.</li>
+    <li>Analysed 3 years of NDVI time-series data, pinpointing the microclimate difference responsible for the crop failure and translating raw satellite signals into a concrete agronomic insight.</li>
+    <li>Delivered a production-ready Streamlit dashboard with satellite maps, alert logs, automated PDF reports, and an SMS alert system via Africa's Talking API.</li>
   </ul>
 </div>
 
 <!-- Overberg -->
 <div class="no-break">
-  <div class="proj-name">Overberg Property Analyzer</div>
+  <div class="proj-name"><a href="https://github.com/Rpvermaak/overstrand-property-analyzer">Overberg Property Analyzer</a></div>
   <div class="proj-tech">Python · Scikit-learn · Streamlit · Apify · Pandas · Docker</div>
   <ul class="cv-list">
-    <li>Scraped 685 live property listings, cleaned and deduplicated across 22 scrape files, and extracted square-metre data from unstructured listing text via regex — producing a clean, analysis-ready dataset from raw web data.</li>
-    <li>Trained a Random Forest model with log-target transformation and suburb-level location encoding achieving <strong>R² = 0.45</strong> on real regional data — deployed as a Streamlit app serving instant predicted market valuations.</li>
+    <li>Scraped 685 live property listings, cleaned and deduplicated across 22 scrape files, and extracted square-metre data from unstructured listing text via regex, producing a clean, analysis-ready dataset from raw web data.</li>
+    <li>Trained a Random Forest model with log-target transformation and suburb-level location encoding achieving <strong>R² = 0.45</strong> on real regional data, deployed as a Streamlit app serving instant predicted market valuations.</li>
   </ul>
 </div>
 
 <!-- Salifort -->
 <div class="no-break">
-  <div class="proj-name">Salifort Motors — HR Churn Prediction</div>
+  <div class="proj-name"><a href="https://github.com/Rpvermaak/Google-Advanced-Data-Analytics-Projects">Salifort Motors: HR Churn Prediction</a></div>
   <div class="proj-tech">Python · Scikit-learn · Random Forest · Logistic Regression · Pandas</div>
   <ul class="cv-list">
     <li>Designed and compared Logistic Regression and Random Forest classifiers on employee data; Random Forest achieved <strong>98%+ accuracy</strong>, identifying satisfaction score, overtime hours, and promotion history as the top churn drivers.</li>
-    <li>Packaged model outputs into an executive HR retention brief with concrete policy recommendations — translating ML results directly into business action.</li>
+    <li>Packaged model outputs into an executive HR retention brief with concrete policy recommendations, translating ML results directly into business action.</li>
   </ul>
 </div>
 
 <!-- TikTok -->
 <div class="no-break">
-  <div class="proj-name">TikTok — Claims vs. Opinions Classifier</div>
+  <div class="proj-name"><a href="https://github.com/Rpvermaak/Google-Advanced-Data-Analytics-Projects/tree/main/TikTok-Project">TikTok: Claims vs. Opinions Classifier</a></div>
   <div class="proj-tech">Python · Scikit-learn · NLP · Random Forest · EDA</div>
   <ul class="cv-list">
-    <li>Engineered engagement-based features from video caption data to automate content moderation at scale, achieving <strong>99% classification accuracy</strong> — identifying behavioural signals that reliably separate factual claims from opinions.</li>
+    <li>Engineered engagement-based features from video caption data to automate content moderation at scale, achieving <strong>99% classification accuracy</strong>, identifying behavioural signals that reliably separate factual claims from opinions.</li>
   </ul>
 </div>
 
 <!-- Cyclistic -->
 <div class="no-break">
-  <div class="proj-name">Cyclistic — Bike Share Conversion Analysis</div>
+  <div class="proj-name"><a href="https://github.com/Rpvermaak/bike-share-project">Cyclistic: Bike Share Conversion Analysis</a></div>
   <div class="proj-tech">SQL · Tableau · Python · Data Storytelling</div>
   <ul class="cv-list">
     <li>Extracted and aggregated 12 months of trip data in SQL, built a Tableau dashboard exposing three distinct usage patterns between casual riders and members, and translated findings into a subscription conversion strategy in an executive-ready presentation.</li>
@@ -291,11 +316,37 @@
 
 <!-- DataKind -->
 <div class="no-break">
-  <div class="proj-name">DataKind — Smallholder Farmers Climate Analysis <em>(Volunteer)</em></div>
+  <div class="proj-name">DataKind: Smallholder Farmers Climate Analysis <em>(Volunteer)</em></div>
   <div class="proj-tech">Python · Climate Data · EDA · Social Impact</div>
   <ul class="cv-list">
-    <li>Volunteered on a DataKind data science challenge (Nov–Dec 2025), analysing historical weather and agricultural datasets to surface seasonal planting recommendations for smallholder farmers in developing regions.</li>
+    <li>Volunteered on a DataKind data science challenge (Nov to Dec 2025), analysing historical weather and agricultural datasets to surface seasonal planting recommendations for smallholder farmers in developing regions.</li>
   </ul>
+</div>
+
+
+<div class="no-break screen-only">
+  <div class="proj-name"><a href="https://github.com/Rpvermaak/Google-Advanced-Data-Analytics-Projects/tree/main/Waze-Project">Waze: User Churn Prediction</a></div>
+  <div class="proj-tech">Python · Hypothesis Testing · Logistic Regression · Seaborn</div>
+  <ul class="cv-list">
+    <li>Explored app-usage patterns, tested behavioural differences between retained and churned users, and modelled churn risk with Logistic Regression and Random Forest.</li>
+  </ul>
+</div>
+
+<div class="no-break screen-only">
+  <div class="proj-name"><a href="https://github.com/Rpvermaak/Google-Advanced-Data-Analytics-Projects/tree/main/TLC">NYC TLC: Fare and Tip Analysis</a></div>
+  <div class="proj-tech">Python · Linear Regression · Statistics · Matplotlib</div>
+  <ul class="cv-list">
+    <li>Built a linear regression fare model and analysed tipping by route, time of day and payment method.</li>
+  </ul>
+</div>
+
+<div class="screen-only">
+<div class="section-head">In Progress</div>
+<ul class="cv-list">
+  <li>YouTube title performance predictor (DataTalksClub Zoomcamp), in progress</li>
+  <li>Potato plant health checker, in progress</li>
+  <li>K-food identifier, in progress</li>
+</ul>
 </div>
 
 <!-- ════════════════════════════════════════════════════════
@@ -307,12 +358,12 @@
 <div class="no-break">
   <div class="job-row">
     <span class="job-title">English Teacher</span>
-    <span class="job-dates">Mar 2026 – Present</span>
+    <span class="job-dates">Mar 2026 to Present</span>
   </div>
   <div class="job-sub">Yeppeun Leader Brain · Seoul, South Korea</div>
   <ul class="cv-list">
-    <li>Continuing active analytics project development and GitHub portfolio maintenance alongside a full-time teaching role — demonstrating consistent output outside core working hours.</li>
-    <li>Delivering daily structured lessons to multinational student cohorts, sharpening the ability to present complex ideas clearly — directly transferable to communicating data insights to non-technical business stakeholders.</li>
+    <li>Continuing active analytics project development and GitHub portfolio maintenance alongside a full-time teaching role, demonstrating consistent output outside core working hours.</li>
+    <li>Delivering daily structured lessons to multinational student cohorts, sharpening the ability to present complex ideas clearly, directly transferable to communicating data insights to non-technical business stakeholders.</li>
   </ul>
 </div>
 
@@ -320,13 +371,13 @@
 <div class="no-break">
   <div class="job-row">
     <span class="job-title">English Teacher</span>
-    <span class="job-dates">May 2024 – Mar 2026</span>
+    <span class="job-dates">May 2024 to Mar 2026</span>
   </div>
   <div class="job-sub">Browns International School · Bundang-gu, South Korea</div>
   <ul class="cv-list">
-    <li>Completed two Google Data Analytics certifications (160+ combined hours) while teaching full-time — proving consistent discipline to upskill and perform simultaneously under a demanding schedule.</li>
+    <li>Completed two Google Data Analytics certifications (160+ combined hours) while teaching full-time, proving consistent discipline to upskill and perform simultaneously under a demanding schedule.</li>
     <li>Built 8+ end-to-end analytics projects and a DataKind volunteer engagement entirely outside work hours, establishing a fully public, verifiable portfolio on GitHub.</li>
-    <li>Adapted communication style and lesson structure daily across diverse multinational student groups — the same skill applied to presenting data findings to varied, non-technical business audiences.</li>
+    <li>Adapted communication style and lesson structure daily across diverse multinational student groups: the same skill applied to presenting data findings to varied, non-technical business audiences.</li>
   </ul>
 </div>
 
@@ -334,12 +385,12 @@
 <div class="no-break">
   <div class="job-row">
     <span class="job-title">Founder &amp; Director</span>
-    <span class="job-dates">Jul 2020 – Jan 2024</span>
+    <span class="job-dates">Jul 2020 to Jan 2024</span>
   </div>
   <div class="job-sub">Vermaak Brewing Company · South Africa</div>
   <ul class="cv-list">
     <li>Founded a craft brewery from zero: designed production systems, secured supplier contracts, and scaled distribution while carrying full P&amp;L responsibility from day one.</li>
-    <li>Built cost models and sales dashboards from scratch to optimise batch scheduling and protect margins — the same quantitative reasoning now applied in Python and SQL.</li>
+    <li>Built cost models and sales dashboards from scratch to optimise batch scheduling and protect margins: the same quantitative reasoning now applied in Python and SQL.</li>
     <li>Negotiated supplier and client contracts, managed staff, and maintained regulatory compliance across production, finance, and distribution simultaneously.</li>
     <li>Sustained business viability through rolling cash-flow forecasts and disciplined P&amp;L management, embedding a financially-minded approach into every analysis produced.</li>
   </ul>
@@ -349,7 +400,7 @@
 <div class="no-break">
   <div class="job-row">
     <span class="job-title">Head Brewer</span>
-    <span class="job-dates">Feb 2019 – Jul 2020</span>
+    <span class="job-dates">Feb 2019 to Jul 2020</span>
   </div>
   <div class="job-sub">Dog and Fig Brewery · Parys, South Africa</div>
   <ul class="cv-list">
@@ -365,10 +416,10 @@
 <div class="no-break">
   <div class="edu-row">
     <span class="edu-degree">Bachelor of Commerce (BCom)</span>
-    <span class="edu-dates">2015 – 2019</span>
+    <span class="edu-dates">2015 to 2019</span>
   </div>
   <div class="edu-inst">Pearson Institute of Higher Education · Majors: Accounting, Finance, Economics &amp; Management</div>
-  <p class="edu-note">A commercially grounded degree that underpins every data analysis — fluency in P&amp;L, financial modelling, and management thinking that contextualises insights for business decision-makers.</p>
+  <p class="edu-note">A commercially grounded degree that underpins every data analysis: fluency in P&amp;L, financial modelling, and management thinking that contextualises insights for business decision-makers.</p>
 </div>
 
 <!-- ════════════════════════════════════════════════════════
@@ -377,7 +428,7 @@
 <div class="section-head">Certifications</div>
 <div class="cert-line"><span class="cert-name">Google Advanced Data Analytics Professional Certificate</span> <span class="cert-sub">· Google / Coursera · Credly verified · Sep 2025</span></div>
 <div class="cert-line"><span class="cert-name">Google Data Analytics Professional Certificate</span> <span class="cert-sub">· Google / Coursera · Credly verified · Dec 2024</span></div>
-<div class="cert-line"><span class="cert-name">Teaching English as a Foreign Language (TEFL), 160 hrs</span> <span class="cert-sub">· TTA — The TEFL Academy · Jun 2023</span></div>
+<div class="cert-line"><span class="cert-name">Teaching English as a Foreign Language (TEFL), 160 hrs</span> <span class="cert-sub">· TTA (The TEFL Academy) · Jun 2023</span></div>
 
 <!-- ════════════════════════════════════════════════════════
      LANGUAGES
